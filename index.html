@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Naveen Hiremath | IT Administrator Portfolio</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts (Inter) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
+
+    <style>
+        /* Apply the Inter font family */
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Custom scrollbar (optional, but nice for dark themes) */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #0f172a;
+            /* slate-900 */
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #334155;
+            /* slate-700 */
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #475569;
+            /* slate-600 */
+        }
+    </style>
+</head>
+
+<body class="bg-slate-900 text-slate-300 antialiased">
+
+    <!-- Header & Navigation -->
+    <header class="sticky top-0 z-50 bg-slate-900/80 backdrop-blur-md shadow-md shadow-slate-900/50">
+        <nav class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col sm:flex-row justify-between items-center py-4 space-y-2 sm:space-y-0">
+                <!-- Name/Logo -->
+                <a href="#home" class="text-2xl font-bold text-white whitespace-nowrap">
+                    Naveen Hiremath
+                </a>
+                <!-- Navigation Links -->
+                <div class="flex flex-wrap justify-center gap-x-4 gap-y-2 sm:gap-x-6">
+                    <a href="#about"
+                        class="text-sm font-medium text-slate-300 hover:text-sky-400 transition-colors">About</a>
+                    <a href="#skills"
+                        class="text-sm font-medium text-slate-300 hover:text-sky-400 transition-colors">Skills</a>
+                    <a href="#experience"
+                        class="text-sm font-medium text-slate-300 hover:text-sky-400 transition-colors">Experience</a>
+                    <a href="#projects"
+                        class="text-sm font-medium text-slate-300 hover:text-sky-400 transition-colors">Projects</a>
+                    <a href="#education"
+                        class="text-sm font-medium text-slate-300 hover:text-sky-400 transition-colors">Education</a>
+                    <a href="#contact"
+                        class="text-sm font-medium text-white bg-sky-600 px-3 py-1 rounded-full hover:bg-sky-500 transition-colors">
+                        Contact
+                    </a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-6xl mx-auto p-4 sm:p-6 lg:p-8 space-y-24 sm:space-y-32">
+
+        <!-- Hero Section -->
+        <section id="home" class="min-h-[70vh] flex flex-col justify-center items-center text-center pt-16">
+            <h1 class="text-5xl sm:text-7xl lg:text-8xl font-black text-white leading-tight">
+                Naveen Hiremath
+            </h1>
+            <p class="mt-4 text-xl sm:text-2xl lg:text-3xl font-medium text-sky-400 max-w-4xl">
+                IT Administrator | Microsoft 365 | Azure DevOps | Automation Specialist
+            </p>
+            <div class="mt-10 flex flex-wrap justify-center gap-6">
+                <!-- LinkedIn -->
+                <a href="https://linkedin.com/in/naveen-hiremath-aa0b44246" target="_blank" rel="noopener noreferrer"
+                    class="inline-flex items-center justify-center p-3 bg-slate-800 rounded-full text-slate-300 hover:text-white hover:bg-sky-600 transition-all shadow-lg"
+                    aria-label="LinkedIn Profile">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                        <rect width="4" height="12" x="2" y="9"></rect>
+                        <circle cx="4" cy="4" r="2"></circle>
+                    </svg>
+                </a>
+                <!-- GitHub -->
+                <a href="https://github.com/Naveen-O-Hiremath" target="_blank" rel="noopener noreferrer"
+                    class="inline-flex items-center justify-center p-3 bg-slate-800 rounded-full text-slate-300 hover:text-white hover:bg-sky-600 transition-all shadow-lg"
+                    aria-label="GitHub Profile">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path
+                            d="M9 19c-4.3 1.4 -4.3-2.5 -6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6.1 0-1.3-.5-2.4-1.3-3.2.1-.3.5-1.5-.1-3.2 0 0-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1c-.6 1.7-.2 2.9-.1 3.2-.8.8-1.3 1.9-1.3 3.2 0 4.7 2.7 5.8 5.5 6.1-.6.5-.9 1.4-.9 2.8v4.1">
+                        </path>
+                    </svg>
+                </a>
+                <!-- Email -->
+                <a href="mailto:naveenhiremathlogs@gmail.com"
+                    class="inline-flex items-center justify-center p-3 bg-slate-800 rounded-full text-slate-300 hover:text-white hover:bg-sky-600 transition-all shadow-lg"
+                    aria-label="Email Naveen">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+                        <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+                    </svg>
+                </a>
+                <!-- Download Resume -->
+                <a href="/files/Naveen_Hiremath_IT_Administrator_Resume.pdf" download
+                    class="inline-flex items-center justify-center p-3 bg-slate-800 rounded-full text-slate-300 hover:text-white hover:bg-sky-600 transition-all shadow-lg"
+                    aria-label="Download Resume">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="7 10 12 15 17 10"></polyline>
+                        <line x1="12" y1="15" x2="12" y2="3"></line>
+                    </svg>
+                </a>
+            </div>
+        </section>
+
+        <!-- About Me Section -->
+        <section id="about" class="scroll-mt-20">
+            <h2 class="text-3xl sm:text-4xl font-bold text-white mb-8 text-center">
+                About Me
+            </h2>
+            <div
+                class="max-w-4xl mx-auto bg-slate-800/50 rounded-xl shadow-lg p-6 sm:p-8 ring-1 ring-slate-700/50 flex flex-col md:flex-row items-center gap-8 md:gap-12">
+                <!-- Image Column -->
+                <div
+                    class="flex-shrink-0 w-48 h-48 md:w-56 md:h-56 rounded-full overflow-hidden shadow-lg ring-4 ring-sky-500/50">
+                    <img src="/files/naveen_img_new.jpeg" alt="Naveen Hiremath"
+                        class="w-full h-full object-cover">
+                </div>
+                <!-- Text Column -->
+                <div class="flex-grow text-center md:text-left">
+                    <p class="text-lg sm:text-xl text-slate-300 leading-relaxed">
+                        Results-driven IT Administrator with 2+ years of experience in Microsoft 365, Azure DevOps,
+                        Entra ID, and AWS WorkSpaces. Skilled in automation, cloud administration, and IT security, with
+                        proven success in streamlining onboarding, license management, and asset tracking. Strong in
+                        PowerShell, Power Automate, Intune, and SharePoint, delivering secure, scalable, and
+                        cost-efficient IT solutions. Recognized for creating thorough IT documentation, SOPs, and
+                        knowledge bases that ensure consistency and efficiency.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="scroll-mt-20">
+            <h2 class="text-3xl sm:text-4xl font-bold text-white mb-12 text-center">
+                Technical Skills
+            </h2>
+            <div class="space-y-10">
+                <!-- Skill Category -->
+                <div>
+                    <h3 class="text-2xl font-semibold text-sky-400 mb-5 text-center sm:text-left">Microsoft 365 &
+                        Security</h3>
+                    <div class="flex flex-wrap justify-center sm:justify-start gap-3">
+                        <span class="skill-pill">Exchange Online</span>
+                        <span class="skill-pill">Entra ID (Azure AD)</span>
+                        <span class="skill-pill">SharePoint Online</span>
+                        <span class="skill-pill">Office 365 Admin</span>
+                        <span class="skill-pill">Intune</span>
+                        <span class="skill-pill">MFA</span>
+                        <span class="skill-pill">Conditional Access</span>
+                        <span class="skill-pill">RBAC</span>
+                    </div>
+                </div>
+
+                <!-- Skill Category -->
+                <div>
+                    <h3 class="text-2xl font-semibold text-sky-400 mb-5 text-center sm:text-left">DevOps & Cloud</h3>
+                    <div class="flex flex-wrap justify-center sm:justify-start gap-3">
+                        <span class="skill-pill">Azure DevOps (VSTS)</span>
+                        <span class="skill-pill">AWS WorkSpaces</span>
+                        <span class="skill-pill">EC2 (basics)</span>
+                        <span class="skill-pill">S3 (basics)</span>
+                        <span class="skill-pill">License & Project Administration</span>
+                    </div>
+                </div>
+
+                <!-- Skill Category -->
+                <div>
+                    <h3 class="text-2xl font-semibold text-sky-400 mb-5 text-center sm:text-left">Automation & Scripting
+                    </h3>
+                    <div class="flex flex-wrap justify-center sm:justify-start gap-3">
+                        <span class="skill-pill">PowerShell</span>
+                        <span class="skill-pill">Power Automate</span>
+                        <span class="skill-pill">Python (basic)</span>
+                        <span class="skill-pill">Microsoft Graph API</span>
+                        <span class="skill-pill">REST APIs</span>
+                    </div>
+                </div>
+
+                <!-- Skill Category -->
+                <div>
+                    <h3 class="text-2xl font-semibold text-sky-400 mb-5 text-center sm:text-left">Core IT & Other</h3>
+                    <div class="flex flex-wrap justify-center sm:justify-start gap-3">
+                        <span class="skill-pill">Windows Administration</span>
+                        <span class="skill-pill">Active Directory</span>
+                        <span class="skill-pill">Asset Management</span>
+                        <span class="skill-pill">IT Onboarding/Offboarding</span>
+                        <span class="skill-pill">Power BI Dashboards</span>
+                        <span class="skill-pill">Audit & Compliance Reporting</span>
+                        <span class="skill-pill">Documentation & SOPs</span>
+                        <span class="skill-pill">Knowledge Management</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Custom CSS for skill pills -->
+        <style>
+            .skill-pill {
+                @apply bg-slate-800 text-sky-300 text-sm font-medium px-4 py-2 rounded-full shadow-sm ring-1 ring-slate-700/50;
+            }
+        </style>
+
+        <!-- Experience Section (Timeline) -->
+        <section id="experience" class="scroll-mt-20">
+            <h2 class="text-3xl sm:text-4xl font-bold text-white mb-12 text-center">
+                Work Experience
+            </h2>
+            <div class="relative max-w-3xl mx-auto">
+                <!-- Vertical Timeline Bar -->
+                <div class="absolute left-3 sm:left-1/2 top-0 h-full w-0.5 bg-slate-700 -translate-x-1/2"></div>
+
+                <!-- Experience Item 1 -->
+                <div class="relative mb-12">
+                    <div
+                        class="absolute left-3 sm:left-1/2 top-1.5 w-6 h-6 bg-sky-500 rounded-full border-4 border-slate-900 -translate-x-1/2">
+                    </div>
+                    <div class="ml-10 sm:ml-0 sm:w-5/12 sm:pl-8 sm:pr-4 sm:text-right">
+                        <p class="text-base font-medium text-sky-400 mb-1">Jan 2025 - Present</p>
+                        <h3 class="text-2xl font-bold text-white">IT Administrator</h3>
+                        <p class="text-lg text-slate-400">Aurigo Software Technologies (p) Ltd</p>
+                    </div>
+                    <div class="sm:w-1/2 sm:pl-12 sm:pr-4">
+                        <ul class="list-disc list-outside ml-10 sm:ml-5 mt-4 sm:mt-0 space-y-2 text-slate-300">
+                            <li>Administer Azure DevOps (VSTS) portal: project creation, license management, user
+                                access, and security configuration for 200+ users.</li>
+                            <li>Designed and implemented an automated employee onboarding workflow, reducing manual
+                                effort by 70%.</li>
+                            <li>Managed Microsoft 365 & Entra ID: mailbox provisioning, license optimization,
+                                conditional access, MFA, and group administration.</li>
+                            <li>Automated application deployment and device compliance via Intune.</li>
+                            <li>Built Power BI reports for asset utilization and license tracking.</li>
+                            <li>Created comprehensive IT documentation including SOPs, runbooks, and knowledge bases.
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Experience Item 2 -->
+                <div class="relative mb-12">
+                    <div
+                        class="absolute left-3 sm:left-1/2 top-1.5 w-6 h-6 bg-sky-500 rounded-full border-4 border-slate-900 -translate-x-1/2">
+                    </div>
+                    <div class="ml-10 sm:ml-0 sm:w-5/12 sm:pl-8 sm:pr-4 sm:text-right sm:float-right">
+                        <p class="text-base font-medium text-sky-400 mb-1">May 2023 - Jan 2025</p>
+                        <h3 class="text-2xl font-bold text-white">Associate IT Administrator</h3>
+                        <p class="text-lg text-slate-400">Aurigo Software Technologies (p) Ltd</p>
+                    </div>
+                    <div class="sm:w-1/2 sm:pl-4 sm:pr-12 sm:float-left sm:text-right">
+                        <ul
+                            class="list-disc list-outside ml-10 sm:ml-0 sm:list-none mt-4 sm:mt-0 space-y-2 text-slate-300">
+                            <li>Monitored and remediated system vulnerabilities using Microsoft Defender.</li>
+                            <li>Automated software deployment and policy enforcement using Microsoft Intune.</li>
+                            <li>Designed and managed SharePoint sites, integrating Power Automate flows.</li>
+                            <li>Developed PowerShell scripts for automated software installation and system
+                                administration.</li>
+                            <li>Created and maintained knowledge bases, user manuals, and audit documentation.</li>
+                            <li>Optimized Microsoft 365 license usage, reducing unused subscriptions by 15%.</li>
+                            <li>Resolved ITSM incidents and service requests within SLA using ZenDesk (95% compliance).
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="clear-both"></div> <!-- Clear float -->
+                </div>
+
+                <!-- Experience Item 3 -->
+                <div class="relative mb-12">
+                    <div
+                        class="absolute left-3 sm:left-1/2 top-1.5 w-6 h-6 bg-sky-500 rounded-full border-4 border-slate-900 -translate-x-1/2">
+                    </div>
+                    <div class="ml-10 sm:ml-0 sm:w-5/12 sm:pl-8 sm:pr-4 sm:text-right">
+                        <p class="text-base font-medium text-sky-400 mb-1">Nov 2022 - May 2023</p>
+                        <h3 class="text-2xl font-bold text-white">Intern - Enterprise IT</h3>
+                        <p class="text-lg text-slate-400">Aurigo Software Technologies (p) Ltd</p>
+                    </div>
+                    <div class="sm:w-1/2 sm:pl-12 sm:pr-4">
+                        <ul class="list-disc list-outside ml-10 sm:ml-5 mt-4 sm:mt-0 space-y-2 text-slate-300">
+                            <li>Installation, configuration, and troubleshooting of operating systems and corporate
+                                applications.</li>
+                            <li>Assisted in asset inventory management, tracking hardware and software.</li>
+                            <li>Managed CCTV monitoring, backup, and basic network configuration.</li>
+                            <li>Handled attendance data maintenance and Audio-Visual conference setup.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Projects Section -->
+        <section id="projects" class="scroll-mt-20">
+            <h2 class="text-3xl sm:text-4xl font-bold text-white mb-12 text-center">
+                Projects
+            </h2>
+            <div class="max-w-2xl mx-auto">
+                <div class="bg-slate-800 rounded-xl shadow-lg overflow-hidden ring-1 ring-slate-700/50">
+                    <div class="p-6 sm:p-8">
+                        <h3 class="text-2xl font-bold text-white">Online Blood Donor Tracker</h3>
+                        <p class="text-base text-sky-400 mt-1">College Group Project</p>
+                        <p class="text-slate-300 mt-4 leading-relaxed">
+                            Developed a web application to track and contact blood donors online, aimed at streamlining
+                            the process of connecting patients with available donors in their vicinity.
+                        </p>
+                        <div class="mt-5 flex flex-wrap gap-3">
+                            <span class="skill-pill">HTML</span>
+                            <span class="skill-pill">CSS</span>
+                            <span class="skill-pill">JavaScript</span>
+                            <span class="skill-pill">PHP</span>
+                            <span class="skill-pill">MySQL</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education & Certifications Section -->
+        <section id="education" class="scroll-mt-20">
+            <h2 class="text-3xl sm:text-4xl font-bold text-white mb-12 text-center">
+                Education & Certifications
+            </h2>
+            <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                <!-- Education Card -->
+                <div class="bg-slate-800 p-6 sm:p-8 rounded-xl shadow-lg ring-1 ring-slate-700/50">
+                    <h3 class="text-2xl font-bold text-white">Education</h3>
+                    <div class="mt-6 space-y-5">
+                        <div>
+                            <h4 class="text-xl font-semibold text-sky-400">Bachelor of Computer Applications</h4>
+                            <p class="text-slate-300 mt-1">JSS STC BBA and BCA College, Banahatti</p>
+                            <p class="text-sm text-slate-400">2019 - 2022 | Rani Channamma University</p>
+                            <p class="text-sm text-slate-400 mt-1">CGPA: 8.3</p>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-semibold text-sky-400">PUC (Science)</h4>
+                            <p class="text-slate-300 mt-1">BLDEA's Science College, Jamkhandi</p>
+                            <p class="text-sm text-slate-400">2016 - 2018 | Karnataka State PU Board</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Certifications Card -->
+                <div class="bg-slate-800 p-6 sm:p-8 rounded-xl shadow-lg ring-1 ring-slate-700/50">
+                    <h3 class="text-2xl font-bold text-white">Planned Certifications</h3>
+                    <ul class="mt-6 list-disc list-outside ml-5 space-y-3 text-slate-300 text-lg">
+                        <li>Microsoft Azure Fundamentals (AZ-900)</li>
+                        <li>AWS Certified Cloud Practitioner</li>
+                        <li>AWS Solutions Architect Associate (SAA-C03)</li>
+                        <li>CompTIA A+</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="scroll-mt-20">
+            <h2 class="text-3xl sm:text-4xl font-bold text-white mb-8 text-center">
+                Get In Touch
+            </h2>
+            <div class="max-w-lg mx-auto text-center">
+                <p class="text-lg text-slate-300 mb-10">
+                    I'm currently open to new opportunities and collaborations. Feel free to reach out via email or
+                    connect with me on LinkedIn.
+                </p>
+                <div class="space-y-6">
+                    <!-- Email -->
+                    <a href="mailto:naveenhiremathlogs@gmail.com"
+                        class="flex items-center justify-center p-4 bg-slate-800 rounded-lg text-lg text-slate-300 hover:text-white hover:bg-sky-600 transition-all shadow-lg ring-1 ring-slate-700/50">
+                        <svg class="w-6 h-6 mr-3 text-sky-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round">
+                            <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+                            <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+                        </svg>
+                        naveenhiremathlogs@gmail.com
+                    </a>
+                    <!-- Phone -->
+                    <a href="tel:+918971285241"
+                        class="flex items-center justify-center p-4 bg-slate-800 rounded-lg text-lg text-slate-300 hover:text-white hover:bg-sky-600 transition-all shadow-lg ring-1 ring-slate-700/50">
+                        <svg class="w-6 h-6 mr-3 text-sky-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round">
+                            <path
+                                d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.63A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
+                            </path>
+                        </svg>
+                        +91 8971285241
+                    </a>
+                    <!-- Location -->
+                    <div
+                        class="flex items-center justify-center p-4 bg-slate-800 rounded-lg text-lg text-slate-300 shadow-lg ring-1 ring-slate-700/50">
+                        <svg class="w-6 h-6 mr-3 text-sky-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round">
+                            <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
+                            <circle cx="12" cy="10" r="3"></circle>
+                        </svg>
+                        Bengaluru, Karnataka, India
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="text-center py-10 mt-24 sm:mt-32 border-t border-slate-700/50 text-slate-500">
+        <p>&copy; 2025 Naveen Hiremath. All rights reserved.</p>
+        <p class="text-sm mt-2">Built with HTML & Tailwind CSS.</p>
+    </footer>
+
+</body>
+
+</html>
