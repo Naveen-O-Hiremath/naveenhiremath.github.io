@@ -1,440 +1,1051 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
-
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Naveen Hiremath | IT Administrator Portfolio</title>
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts (Inter) -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Naveen Hiremath — Portfolio OS</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{--accent:#38bdf8;--accent2:#818cf8;--accent3:#34d399;--accent4:#f472b6;--tp:rgba(255,255,255,.95);--ts:rgba(255,255,255,.55);--tg:#4ade80;--ty:#fbbf24;--tr:#f87171;--tb:#60a5fa;--tc:#22d3ee;--tpu:#a78bfa;}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:'Inter',-apple-system,sans-serif;background:#060612;color:var(--tp);height:100vh;overflow:hidden;user-select:none;}
 
-    <style>
-        /* Apply the Inter font family */
-        body {
-            font-family: 'Inter', sans-serif;
-        }
+  /* WALLPAPER */
+  .wp{position:fixed;inset:0;z-index:0;
+      background: #020205 url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=2072') no-repeat center center/cover;
+      background-attachment: fixed;
+  }
+  @keyframes wpS{0%{filter:hue-rotate(0deg) brightness(1)}100%{filter:hue-rotate(20deg) brightness(1.07)}}
+  .wp::after{content:'';position:absolute;inset:0;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");opacity:.45;}
 
-        /* Custom scrollbar (optional, but nice for dark themes) */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
+  /* TOPBAR */
+  .topbar{position:fixed;top:0;left:0;right:0;z-index:100;height:32px;background:rgba(6,6,18,.55);backdrop-filter:blur(40px) saturate(180%);-webkit-backdrop-filter:blur(40px);border-bottom:1px solid rgba(255,255,255,.05);display:flex;align-items:center;justify-content:space-between;padding:0 16px;font-size:12px;font-weight:500;}
+  .tl{display:flex;gap:18px;align-items:center;}
+  .tlogo{font-weight:800;font-size:13px;font-family:'Space Grotesk',sans-serif;color:var(--accent);letter-spacing:.02em;}
+  .titem{color:var(--ts);cursor:pointer;transition:color .2s;}
+  .titem:hover{color:var(--tp);}
+  .tr{display:flex;gap:14px;align-items:center;color:var(--ts);font-size:12px;}
+  #clk{color:var(--tp);font-variant-numeric:tabular-nums;}
 
-        ::-webkit-scrollbar-track {
-            background: #0f172a;
-            /* slate-900 */
-        }
+  /* DESKTOP */
+  .desktop{position:fixed;inset:32px 0 88px 0;z-index:1;}
 
-        ::-webkit-scrollbar-thumb {
-            background: #334155;
-            /* slate-700 */
-            border-radius: 4px;
-        }
+  /* HERO */
+  .hero{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center;pointer-events:none;animation:hIn 1.2s cubic-bezier(.16,1,.3,1) forwards;}
+  @keyframes hIn{from{opacity:0;transform:translate(-50%,-48%) scale(.96)}to{opacity:1;transform:translate(-50%,-50%) scale(1)}}
+  .h-eye{font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:14px;opacity:.85;}
+  .h-name{font-family:'Space Grotesk',sans-serif;font-size:clamp(3.2rem,7vw,6.2rem);font-weight:700;line-height:.95;letter-spacing:-.04em;background:linear-gradient(135deg,#fff 0%,var(--accent) 35%,var(--accent2) 65%,var(--accent3) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:18px;}
+  .h-role{font-size:clamp(.9rem,1.6vw,1.1rem);color:var(--ts);font-weight:400;letter-spacing:.03em;margin-bottom:24px;}
+  .h-badges{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:18px;}
+  .hbadge{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:20px;padding:4px 12px;font-size:11px;font-weight:600;color:var(--ts);letter-spacing:.04em;}
+  .hbadge.az{border-color:rgba(56,189,248,.3);color:var(--accent);background:rgba(56,189,248,.07);}
+  .hbadge.gc{border-color:rgba(52,211,153,.3);color:var(--accent3);background:rgba(52,211,153,.07);}
+  .hbadge.ms{border-color:rgba(129,140,248,.3);color:var(--accent2);background:rgba(129,140,248,.07);}
+  .hbadge.ps{border-color:rgba(244,114,182,.3);color:var(--accent4);background:rgba(244,114,182,.07);}
+  .h-hint{font-size:11px;color:rgba(255,255,255,.22);letter-spacing:.1em;animation:pulse 2.5s ease-in-out infinite;}
+  @keyframes pulse{0%,100%{opacity:.3}50%{opacity:.9}}
 
-        ::-webkit-scrollbar-thumb:hover {
-            background: #475569;
-            /* slate-600 */
-        }
-    </style>
+  /* DESKTOP ICONS */
+  .icons{position:absolute;top:20px;right:20px;display:flex;flex-direction:column;gap:6px;}
+  .di{display:flex;flex-direction:column;align-items:center;gap:5px;padding:10px 12px;border-radius:12px;cursor:pointer;width:78px;transition:all .2s;}
+  .di:hover{background:rgba(255,255,255,.07);}
+  .di:active{transform:scale(.94);}
+  .diimg{width:46px;height:46px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;box-shadow:0 4px 14px rgba(0,0,0,.4),inset 0 1px 0 rgba(255,255,255,.15);}
+  .dilbl{font-size:11px;color:var(--tp);text-align:center;text-shadow:0 1px 4px rgba(0,0,0,.9);white-space:nowrap;}
+
+  /* DOCK */
+  .dock-wrap{position:fixed;bottom:14px;left:50%;transform:translateX(-50%);z-index:200;}
+  .dock{display:flex;align-items:flex-end;gap:6px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:22px;padding:9px 12px;backdrop-filter:blur(50px) saturate(200%);-webkit-backdrop-filter:blur(50px);box-shadow:0 8px 40px rgba(0,0,0,.6),0 1px 0 rgba(255,255,255,.07) inset;animation:dkIn 1s cubic-bezier(.16,1,.3,1) .4s both;}
+  @keyframes dkIn{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+  .di2{position:relative;display:flex;flex-direction:column;align-items:center;cursor:pointer;transition:transform .25s cubic-bezier(.34,1.56,.64,1);}
+  .di2:hover{transform:translateY(-12px) scale(1.22);}
+  .di2:hover .dtip{opacity:1;transform:translateY(-5px);}
+  .di2:active{transform:translateY(-9px) scale(1.12);}
+  .dico{width:50px;height:50px;border-radius:13px;display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:0 4px 14px rgba(0,0,0,.45),inset 0 1px 0 rgba(255,255,255,.18);transition:box-shadow .2s;}
+  .di2:hover .dico{box-shadow:0 10px 28px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.18);}
+  .ddot{width:4px;height:4px;border-radius:50%;background:rgba(255,255,255,.55);margin-top:4px;opacity:0;transition:opacity .2s;}
+  .ddot.on{opacity:1;}
+  .dtip{position:absolute;bottom:calc(100% + 10px);background:rgba(0,0,0,.82);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.08);color:#fff;font-size:11px;font-weight:600;padding:4px 10px;border-radius:8px;white-space:nowrap;opacity:0;transform:translateY(0);transition:all .2s;pointer-events:none;letter-spacing:.03em;}
+  .sep{width:1px;height:42px;background:rgba(255,255,255,.1);margin:0 3px;align-self:center;}
+
+  /* icon colors */
+  .az2{background:linear-gradient(135deg,#38bdf8,#0284c7);}
+  .gn{background:linear-gradient(135deg,#34d399,#059669);}
+  .pu{background:linear-gradient(135deg,#a78bfa,#7c3aed);}
+  .or{background:linear-gradient(135deg,#fb923c,#ea580c);}
+  .pk{background:linear-gradient(135deg,#f472b6,#db2777);}
+  .in{background:linear-gradient(135deg,#818cf8,#4f46e5);}
+  .tl2{background:linear-gradient(135deg,#2dd4bf,#0d9488);}
+  .yw{background:linear-gradient(135deg,#fbbf24,#d97706);}
+  .tm{background:linear-gradient(135deg,#1e2535,#0f172a);border:1px solid rgba(56,189,248,.3);}
+  .dk{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);}
+
+  /* WINDOWS */
+  .wov{position:fixed;inset:0;z-index:300;display:none;align-items:center;justify-content:center;}
+  .wov.on{display:flex;}
+  .wbd{position:absolute;inset:0;background:rgba(0,0,0,.45);animation:bdin .2s ease;}
+  @keyframes bdin{from{opacity:0}to{opacity:1}}
+  .win{position:relative;background:rgba(10,12,26,.85);border:1px solid rgba(255,255,255,.1);border-radius:18px;backdrop-filter:blur(50px) saturate(220%);-webkit-backdrop-filter:blur(50px);box-shadow:0 24px 80px rgba(0,0,0,.75),0 1px 0 rgba(255,255,255,.08) inset;width:min(700px,93vw);max-height:82vh;display:flex;flex-direction:column;animation:wIn .35s cubic-bezier(.16,1,.3,1) both;overflow:hidden;}
+  @keyframes wIn{from{opacity:0;transform:scale(.91) translateY(18px)}to{opacity:1;transform:scale(1) translateY(0)}}
+  .win.closing{animation:wOut .22s cubic-bezier(.36,0,.66,-.56) both;}
+  @keyframes wOut{from{opacity:1;transform:scale(1)}to{opacity:0;transform:scale(.87)}}
+  .wbar{display:flex;align-items:center;gap:12px;padding:14px 20px;border-bottom:1px solid rgba(255,255,255,.05);flex-shrink:0;}
+  .wbtns{display:flex;gap:7px;}
+  .wb2{width:13px;height:13px;border-radius:50%;cursor:pointer;transition:filter .15s,transform .15s;display:flex;align-items:center;justify-content:center;font-size:8px;color:transparent;}
+  .wb2:hover{filter:brightness(1.25);transform:scale(1.1);color:rgba(0,0,0,.65);}
+  .wbr{background:#ff5f57}.wby{background:#febc2e}.wbg{background:#28c840}
+  .wtitle{flex:1;text-align:center;font-size:13px;font-weight:600;color:var(--ts);letter-spacing:.02em;}
+  .wbody{padding:26px 30px;overflow-y:auto;flex:1;scrollbar-width:thin;scrollbar-color:rgba(255,255,255,.12) transparent;}
+  .wbody::-webkit-scrollbar{width:4px}.wbody::-webkit-scrollbar-thumb{background:rgba(255,255,255,.12);border-radius:2px;}
+
+  /* ABOUT */
+  .atop{display:flex;gap:22px;align-items:flex-start;margin-bottom:20px;}
+  .ava{width:94px;height:94px;border-radius:20px;flex-shrink:0;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;font-size:44px;box-shadow:0 8px 30px rgba(56,189,248,.35);}
+  .ainfo h2{font-size:20px;font-weight:700;font-family:'Space Grotesk',sans-serif;margin-bottom:4px;}
+  .rpill{display:inline-block;background:rgba(56,189,248,.1);border:1px solid rgba(56,189,248,.28);color:var(--accent);font-size:11px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;padding:3px 10px;border-radius:20px;margin-bottom:10px;}
+  .ainfo p{color:var(--ts);font-size:13px;line-height:1.7;}
+  .chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:14px;}
+  .chip{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:8px;padding:5px 10px;font-size:11px;color:var(--ts);display:flex;align-items:center;gap:5px;}
+  .chip a{color:inherit;text-decoration:none;}.chip a:hover{color:var(--accent);}
+  .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:16px;}
+  .stat{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:14px;text-align:center;}
+  .stn{font-size:22px;font-weight:800;color:var(--accent);font-family:'Space Grotesk',sans-serif;}
+  .stl{font-size:11px;color:var(--ts);margin-top:2px;}
+  .sbox{margin-top:16px;padding:13px 16px;background:rgba(52,211,153,.05);border:1px solid rgba(52,211,153,.18);border-radius:12px;font-size:13px;color:var(--ts);}
+
+  /* SKILLS */
+  .skrow{margin-bottom:13px;}
+  .skmeta{display:flex;justify-content:space-between;font-size:12px;margin-bottom:5px;}
+  .sknm{color:var(--tp);font-weight:600;}.skpct{color:var(--accent);font-weight:700;}
+  .skbg{height:5px;background:rgba(255,255,255,.06);border-radius:99px;overflow:hidden;}
+  .skf{height:100%;border-radius:99px;width:0;background:linear-gradient(90deg,var(--accent),var(--accent2));transition:width 1.1s cubic-bezier(.16,1,.3,1);}
+  .schips{display:flex;flex-wrap:wrap;gap:7px;margin-top:8px;}
+  .sc{background:rgba(56,189,248,.07);border:1px solid rgba(56,189,248,.18);color:var(--accent);font-size:11px;font-weight:600;padding:4px 10px;border-radius:20px;}
+  .sc.g{background:rgba(52,211,153,.07);border-color:rgba(52,211,153,.2);color:var(--accent3);}
+  .sc.p{background:rgba(129,140,248,.07);border-color:rgba(129,140,248,.2);color:var(--accent2);}
+  .sc.y{background:rgba(251,191,36,.07);border-color:rgba(251,191,36,.2);color:#fbbf24;}
+
+  /* TABS */
+  .tabs{display:flex;gap:4px;margin-bottom:18px;flex-wrap:wrap;}
+  .tab{padding:6px 14px;border-radius:8px;font-size:12px;font-weight:600;cursor:pointer;color:var(--ts);transition:all .2s;border:1px solid transparent;}
+  .tab.on,.tab:hover{background:rgba(56,189,248,.1);color:var(--accent);border-color:rgba(56,189,248,.2);}
+
+  /* TIMELINE */
+  .tline{position:relative;padding-left:22px;}
+  .tline::before{content:'';position:absolute;left:6px;top:8px;bottom:8px;width:2px;background:linear-gradient(to bottom,var(--accent),var(--accent2),transparent);border-radius:2px;}
+  .tli{position:relative;margin-bottom:24px;}
+  .tdot{position:absolute;left:-18px;top:5px;width:13px;height:13px;border-radius:50%;background:var(--accent);border:2.5px solid rgba(10,12,26,.9);}
+  .tco{font-weight:700;font-size:14px;color:var(--tp);}
+  .trole{font-size:12px;color:var(--accent);font-weight:600;margin:2px 0;}
+  .tdate{font-size:11px;color:var(--ts);margin-bottom:7px;}
+  .tpts{list-style:none;}
+  .tpts li{font-size:12px;color:var(--ts);line-height:1.6;padding:2px 0 2px 12px;position:relative;}
+  .tpts li::before{content:'›';position:absolute;left:0;color:var(--accent);font-weight:700;}
+  .ttags{display:flex;flex-wrap:wrap;gap:5px;margin-top:8px;}
+  .ttag{background:rgba(56,189,248,.06);border:1px solid rgba(56,189,248,.18);color:var(--accent);font-size:10px;font-weight:700;padding:2px 8px;border-radius:20px;letter-spacing:.04em;}
+
+  /* PROJECTS */
+  .pgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+  .pc{background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.07);border-radius:13px;padding:16px;transition:all .25s;cursor:pointer;}
+  .pc:hover{background:rgba(255,255,255,.06);border-color:rgba(56,189,248,.25);transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.35);}
+  .pico{font-size:26px;margin-bottom:9px;}
+  .pnm{font-size:13px;font-weight:700;margin-bottom:5px;}
+  .pdesc{font-size:11px;color:var(--ts);line-height:1.5;}
+  .pstack{display:flex;flex-wrap:wrap;gap:4px;margin-top:9px;}
+  .pt{background:rgba(129,140,248,.08);border:1px solid rgba(129,140,248,.18);color:var(--accent2);font-size:10px;padding:2px 7px;border-radius:4px;font-weight:600;}
+
+  /* CERTS */
+  .cgrid{display:flex;flex-direction:column;gap:10px;}
+  .ccard{display:flex;align-items:center;gap:14px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:14px 16px;}
+  .cico{font-size:28px;flex-shrink:0;}
+  .cnm{font-size:13px;font-weight:700;}
+  .csub{font-size:11px;color:var(--ts);margin-top:2px;}
+  .cbadge{margin-left:auto;font-size:10px;font-weight:700;padding:3px 9px;border-radius:20px;flex-shrink:0;}
+  .earned{background:rgba(52,211,153,.12);border:1px solid rgba(52,211,153,.3);color:var(--accent3);}
+  .planned{background:rgba(251,191,36,.08);border:1px solid rgba(251,191,36,.25);color:#fbbf24;}
+
+  /* RESUME */
+  .rsec{margin-bottom:18px;}
+  .rsec h4{font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:9px;padding-bottom:6px;border-bottom:1px solid rgba(255,255,255,.06);}
+  .rrow{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:5px;}
+  .ritem{font-size:13px;font-weight:700;}
+  .rsub{font-size:11px;color:var(--ts);}
+  .rdate{font-size:11px;color:var(--accent2);flex-shrink:0;margin-left:8px;}
+
+  /* SOCIAL */
+  .sgrid{display:grid;grid-template-columns:1fr 1fr;gap:11px;}
+  .scard{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:13px;padding:15px;display:flex;align-items:center;gap:12px;cursor:pointer;transition:all .22s;}
+  .scard:hover{background:rgba(255,255,255,.07);transform:translateY(-2px);}
+  .sico{font-size:24px;width:44px;height:44px;display:flex;align-items:center;justify-content:center;border-radius:11px;flex-shrink:0;}
+  .snm{font-size:13px;font-weight:700;color:var(--tp);}
+  .shdl{font-size:11px;color:var(--ts);margin-top:2px;}
+
+  /* CONTACT */
+  .fg{display:flex;flex-direction:column;gap:5px;margin-bottom:12px;}
+  .fg label{font-size:11px;font-weight:700;color:var(--ts);letter-spacing:.07em;}
+  .fg input,.fg textarea{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);border-radius:10px;padding:10px 13px;color:var(--tp);font-size:13px;font-family:inherit;outline:none;transition:all .2s;}
+  .fg input:focus,.fg textarea:focus{border-color:rgba(56,189,248,.4);background:rgba(255,255,255,.07);box-shadow:0 0 0 3px rgba(56,189,248,.08);}
+  .fg textarea{min-height:80px;resize:none;}
+  .bsend{background:linear-gradient(135deg,var(--accent),var(--accent2));border:none;border-radius:10px;padding:13px;color:#000;font-size:13px;font-weight:800;cursor:pointer;transition:all .2s;font-family:inherit;letter-spacing:.04em;width:100%;}
+  .bsend:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(56,189,248,.28);}
+
+  /* NOTIFICATION */
+  .notif{position:fixed;top:44px;right:16px;z-index:600;background:rgba(10,12,26,.94);border:1px solid rgba(255,255,255,.1);border-radius:14px;backdrop-filter:blur(20px);padding:13px 17px;display:flex;align-items:center;gap:11px;min-width:250px;animation:nfIn .4s cubic-bezier(.16,1,.3,1) both;box-shadow:0 10px 36px rgba(0,0,0,.55);}
+  @keyframes nfIn{from{opacity:0;transform:translateX(40px)}to{opacity:1;transform:translateX(0)}}
+  .nfico{font-size:22px;}
+  .nftitle{font-size:12px;font-weight:700;margin-bottom:1px;}
+  .nfbody{font-size:11px;color:var(--ts);}
+
+  /* SPOTLIGHT */
+  .spov{position:fixed;inset:0;z-index:700;background:rgba(0,0,0,.55);backdrop-filter:blur(10px);display:none;align-items:flex-start;justify-content:center;padding-top:14vh;}
+  .spov.on{display:flex;}
+  .spbox{width:min(580px,90vw);background:rgba(10,12,26,.94);border:1px solid rgba(255,255,255,.13);border-radius:18px;overflow:hidden;box-shadow:0 40px 80px rgba(0,0,0,.7);animation:wIn .3s cubic-bezier(.16,1,.3,1);}
+  .spwrap{display:flex;align-items:center;gap:11px;padding:15px 19px;}
+  .spico{font-size:18px;opacity:.45;}
+  .spinp{flex:1;background:none;border:none;outline:none;font-size:17px;color:var(--tp);font-family:inherit;}
+  .spres{border-top:1px solid rgba(255,255,255,.06);}
+  .spri{display:flex;align-items:center;gap:11px;padding:11px 19px;cursor:pointer;transition:background .15s;font-size:13px;}
+  .spri:hover,.spri.active{background:rgba(56,189,248,.1);color:var(--accent);}
+  .sprii{font-size:18px;width:26px;text-align:center;}
+
+  /* ═══════════════════════════════
+     TERMINAL
+  ══════════════════════════════ */
+  .twin{width:min(860px,95vw);max-height:86vh;background:rgba(6,8,18,.98);border:1px solid rgba(56,189,248,.22);box-shadow:0 24px 80px rgba(0,0,0,.9),0 0 0 1px rgba(56,189,248,.05) inset,0 0 80px rgba(56,189,248,.03);}
+  .tbar2{background:rgba(12,16,30,.95);border-bottom:1px solid rgba(56,189,248,.1);}
+  .tbody{padding:0;background:transparent;font-family:'JetBrains Mono','Courier New',monospace;font-size:13px;line-height:1.7;overflow-y:auto;max-height:calc(86vh - 52px);flex:1;}
+  .tout{padding:16px 20px 0;}
+  .tline2{margin:0;}
+  .tg{color:var(--tg)} .ty{color:var(--ty)} .tr2{color:var(--tr)} .tb2{color:var(--tb)} .tc2{color:var(--tc)} .tpu2{color:var(--tpu)} .tw{color:rgba(255,255,255,.9)} .td{color:rgba(255,255,255,.35)}
+  .tinrow{display:flex;align-items:center;padding:6px 20px 16px;}
+  .tprlbl{font-family:'JetBrains Mono',monospace;font-size:13px;white-space:nowrap;color:var(--tg);flex-shrink:0;}
+  .tinp{flex:1;background:transparent;border:none;outline:none;font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--ty);caret-color:var(--tg);}
+  .tsh{color:var(--tc);font-weight:700;border-bottom:1px solid rgba(56,189,248,.2);padding-bottom:2px;margin:8px 0 5px;}
+  .tascii{color:var(--tc);font-size:11px;line-height:1.3;}
+  .lbar{position:fixed;top:0;left:0;height:2px;z-index:999;background:linear-gradient(90deg,var(--accent),var(--accent2),var(--accent3));transition:width .3s ease;}
+
+  /* ──────────────── RESPONSIVE DESIGN ──────────────── */
+  @media (max-width: 768px) {
+    .topbar {font-size:11px;height:40px;}
+    .tl {gap:10px;}
+    .titem {display:none;}
+    .tr {gap:10px;font-size:11px;}
+    
+    .desktop {inset:40px 0 90px 0;}
+    
+    .h-name {font-size:clamp(2rem,6vw,4rem);margin-bottom:10px;}
+    .h-role {font-size:clamp(0.8rem,1.5vw,1rem);margin-bottom:16px;}
+    .h-eye {font-size:10px;margin-bottom:10px;}
+    .h-badges {gap:6px;margin-bottom:14px;}
+    .hbadge {font-size:10px;padding:3px 9px;}
+    
+    .icons {top:14px;right:10px;gap:4px;}
+    .di {width:64px;padding:8px;}
+    .diimg {width:38px;height:38px;font-size:18px;}
+    .dilbl {font-size:10px;}
+    
+    .dock-wrap {bottom:10px;}
+    .dock {padding:7px 10px;gap:4px;}
+    .di2:hover {transform:translateY(-10px) scale(1.18);}
+    .dico {width:44px;height:44px;font-size:20px;}
+    
+    .win {width:min(94vw,550px);max-height:84vh;}
+    .wbody {padding:20px 24px;}
+    .pgrid {grid-template-columns:1fr;}
+    .atop {flex-direction:column;align-items:center;text-align:center;}
+    .ava {width:80px;height:80px;font-size:36px;}
+    .ainfo h2 {font-size:18px;}
+    .stats {grid-template-columns:1fr;gap:8px;}
+    .sgrid {grid-template-columns:1fr;}
+    .tabs {gap:3px;}
+    .tab {font-size:11px;padding:5px 12px;}
+  }
+
+  @media (max-width: 480px) {
+    .topbar {height:36px;padding:0 10px;font-size:10px;}
+    .tlogo {font-size:11px;}
+    .tr {gap:6px;font-size:10px;}
+    
+    .hero {padding:0 12px;}
+    .h-eye {font-size:9px;margin-bottom:6px;display:none;}
+    .h-name {font-size:clamp(1.5rem,5vw,3rem);margin-bottom:6px;}
+    .h-role {font-size:clamp(0.7rem,1.2vw,0.85rem);margin-bottom:12px;}
+    .h-badges {display:none;}
+    .h-hint {font-size:10px;}
+    
+    .icons {top:10px;right:6px;}
+    .di {width:58px;padding:6px;}
+    .diimg {width:34px;height:34px;font-size:16px;}
+    .dilbl {font-size:9px;}
+    
+    .dock-wrap {bottom:8px;}
+    .dock {padding:6px 8px;gap:3px;}
+    .dico {width:40px;height:40px;font-size:18px;}
+    .di2:hover {transform:translateY(-8px) scale(1.15);}
+    .dtip {font-size:10px;padding:3px 8px;}
+    
+    .win {width:min(97vw,420px);border-radius:14px;max-height:86vh;}
+    .wbar {padding:12px 16px;}
+    .wtitle {font-size:12px;}
+    .wbody {padding:16px 18px;font-size:12px;}
+    .pgrid {gap:10px;}
+    .pc {padding:14px;}
+    .pnm {font-size:12px;}
+    .pdesc {font-size:10px;}
+    .atop {text-align:center;}
+    .ava {width:72px;height:72px;font-size:32px;}
+    .ainfo h2 {font-size:16px;}
+    .stats {grid-template-columns:1fr;gap:6px;}
+    .stat {padding:10px;}
+    .stn {font-size:18px;}
+    .stl {font-size:10px;}
+    .chips {gap:5px;margin-top:10px;}
+    .chip {font-size:10px;padding:4px 8px;}
+    .skrow {margin-bottom:10px;}
+    .skmeta {font-size:11px;margin-bottom:4px;}
+    .skbg {height:4px;}
+    .sc {font-size:10px;padding:3px 8px;}
+    .tabs {flex-wrap:wrap;gap:2px;margin-bottom:14px;}
+    .tab {font-size:10px;padding:4px 10px;}
+    .sgrid {gap:8px;}
+    .scard {padding:12px;gap:10px;}
+    .snm {font-size:12px;}
+    .shdl {font-size:10px;}
+    .fg {gap:4px;margin-bottom:10px;}
+    .fg label {font-size:10px;}
+    .fg input,.fg textarea {font-size:16px;padding:9px 11px;}
+    .tline {padding-left:18px;}
+    .tdot {width:11px;height:11px;left:-16px;}
+    .tco {font-size:13px;}
+    .trole {font-size:11px;}
+    .tdate {font-size:10px;}
+    .tpts li {font-size:11px;padding:1px 0 1px 10px;}
+    .ttag {font-size:9px;padding:2px 6px;}
+    .ccard {gap:10px;padding:12px;}
+    .cnm {font-size:12px;}
+    .csub {font-size:10px;}
+    .cbadge {font-size:9px;padding:2px 7px;}
+    .rsec h4 {font-size:10px;margin-bottom:7px;padding-bottom:4px;}
+    .ritem {font-size:12px;}
+    .rsub {font-size:10px;}
+    .rdate {font-size:10px;}
+    .fg textarea {min-height:70px;}
+    .spbox {width:min(95vw,380px);}
+    .spinp {font-size:16px;}
+  }
+
+  @media (orientation:landscape) and (max-height:600px) {
+    .topbar {height:28px;font-size:10px;}
+    .desktop {inset:28px 0 80px 0;}
+    .h-eye {display:none;}
+    .h-name {font-size:clamp(1.2rem,4vw,2.5rem);margin-bottom:6px;}
+    .h-role {font-size:clamp(0.7rem,1vw,0.8rem);margin-bottom:8px;}
+    .h-hint {font-size:9px;}
+  }
+</style>
 </head>
+<body>
+<div class="lbar" id="lbar" style="width:0%"></div>
+<div class="wp"></div>
 
-<body class="bg-slate-900 text-slate-300 antialiased">
+<!-- TOPBAR -->
+<div class="topbar">
+  <div class="tl">
+    <span class="tlogo">⌘ Naveen.OS</span>
+    <span class="titem" onclick="openW('about')">About</span>
+    <span class="titem" onclick="openW('experience')">Experience</span>
+    <span class="titem" onclick="openW('skills')">Skills</span>
+    <span class="titem" onclick="openW('terminal')">Terminal</span>
+  </div>
+  <div class="tr">
+    <span style="color:var(--accent3)">☁️ Azure Connected</span>
+    <span id="clk">--:-- --</span>
+  </div>
+</div>
 
-    <!-- Header & Navigation -->
-    <header class="sticky top-0 z-50 bg-slate-900/80 backdrop-blur-md shadow-md shadow-slate-900/50">
-        <nav class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col sm:flex-row justify-between items-center py-4 space-y-2 sm:space-y-0">
-                <!-- Name/Logo -->
-                <a href="#home" class="text-2xl font-bold text-white whitespace-nowrap">
-                    Naveen Hiremath
-                </a>
-                <!-- Navigation Links -->
-                <div class="flex flex-wrap justify-center gap-x-4 gap-y-2 sm:gap-x-6">
-                    <a href="#about"
-                        class="text-sm font-medium text-slate-300 hover:text-sky-400 transition-colors">About</a>
-                    <a href="#skills"
-                        class="text-sm font-medium text-slate-300 hover:text-sky-400 transition-colors">Skills</a>
-                    <a href="#experience"
-                        class="text-sm font-medium text-slate-300 hover:text-sky-400 transition-colors">Experience</a>
-                    <a href="#projects"
-                        class="text-sm font-medium text-slate-300 hover:text-sky-400 transition-colors">Projects</a>
-                    <a href="#education"
-                        class="text-sm font-medium text-slate-300 hover:text-sky-400 transition-colors">Education</a>
-                    <a href="#contact"
-                        class="text-sm font-medium text-white bg-sky-600 px-3 py-1 rounded-full hover:bg-sky-500 transition-colors">
-                        Contact
-                    </a>
-                </div>
-            </div>
-        </nav>
-    </header>
+<!-- DESKTOP -->
+<div class="desktop">
+  <div class="hero">
+    <div class="h-eye">👋 Welcome to my Portfolio OS</div>
+    <div class="h-name">Naveen Hiremath</div>
+    <div class="h-role">IT &amp; Cloud Administrator · Automation Engineer · Microsoft 365 Specialist</div>
+    <div class="h-badges">
+      <span class="hbadge az">☁️ Azure AZ-104</span>
+      <span class="hbadge ms">🔷 Microsoft 365</span>
+      <span class="hbadge gc">🟢 GCP / GKE</span>
+      <span class="hbadge ps">⚡ PowerShell</span>
+      <span class="hbadge" style="border-color:rgba(251,191,36,.3);color:#fbbf24;background:rgba(251,191,36,.07)">🤖 Automation</span>
+    </div>
+    <div class="h-hint">↓ Click dock icons below or press ⌘K to search ↓</div>
+  </div>
+  <div class="icons">
+    <div class="di" onclick="openW('terminal')"><div class="diimg tm">⌨️</div><div class="dilbl">Terminal</div></div>
+    <div class="di" onclick="openW('resume')"><div class="diimg az2">📄</div><div class="dilbl">Résumé</div></div>
+    <div class="di" onclick="openW('certs')"><div class="diimg yw">🏅</div><div class="dilbl">Certs</div></div>
+  </div>
+</div>
 
-    <!-- Main Content -->
-    <main class="max-w-6xl mx-auto p-4 sm:p-6 lg:p-8 space-y-24 sm:space-y-32">
+<!-- DOCK -->
+<div class="dock-wrap">
+  <div class="dock">
+    <div class="di2" onclick="openW('about')"><div class="dico in">👤</div><div class="dtip">About Me</div><div class="ddot on"></div></div>
+    <div class="di2" onclick="openW('skills')"><div class="dico tl2">⚡</div><div class="dtip">Skills</div><div class="ddot"></div></div>
+    <div class="di2" onclick="openW('experience')"><div class="dico or">💼</div><div class="dtip">Experience</div><div class="ddot"></div></div>
+    <div class="di2" onclick="openW('projects')"><div class="dico pu">🚀</div><div class="dtip">Projects</div><div class="ddot"></div></div>
+    <div class="di2" onclick="openW('certs')"><div class="dico yw">🏅</div><div class="dtip">Certifications</div><div class="ddot"></div></div>
+    <div class="sep"></div>
+    <div class="sep"></div>
+    <div class="di2" onclick="openW('resume')"><div class="dico az2"><img src="/images/resume.png" style="width:100%;height:100%;object-fit:contain"></div><div class="dtip">Résumé</div><div class="ddot"></div></div>
+    <div class="di2" onclick="openW('social')"><div class="dico az2"><img src="/images/socials.png" style="width:100%;height:100%;object-fit:contain"></div><div class="dtip">Socials</div><div class="ddot"></div></div>
+    <div class="di2" onclick="openW('terminal')"><div class="dico az2"><img src="/images/terminal.png" style="width:100%;height:100%;object-fit:contain"></div><div class="dtip">Terminal</div><div class="ddot"></div></div>
+        <div class="di2" onclick="openW('contact')"><div class="dico az2"><img src="/images/contact.png" style="width:100%;height:100%;object-fit:contain"></div><div class="dtip">Contact</div><div class="ddot"></div></div>
+  </div>
+</div>
 
-        <!-- Hero Section -->
-        <section id="home" class="min-h-[70vh] flex flex-col justify-center items-center text-center pt-16">
-            <h1 class="text-5xl sm:text-7xl lg:text-8xl font-black text-white leading-tight">
-                Naveen Hiremath
-            </h1>
-            <p class="mt-4 text-xl sm:text-2xl lg:text-3xl font-medium text-sky-400 max-w-4xl">
-                IT Administrator | Microsoft 365 | Azure DevOps | Automation Specialist
-            </p>
-            <div class="mt-10 flex flex-wrap justify-center gap-6">
-                <!-- LinkedIn -->
-                <a href="https://linkedin.com/in/naveen-hiremath-aa0b44246" target="_blank" rel="noopener noreferrer"
-                    class="inline-flex items-center justify-center p-3 bg-slate-800 rounded-full text-slate-300 hover:text-white hover:bg-sky-600 transition-all shadow-lg"
-                    aria-label="LinkedIn Profile">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                        xmlns="http://www.w3.org/2000/svg" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
-                        <rect width="4" height="12" x="2" y="9"></rect>
-                        <circle cx="4" cy="4" r="2"></circle>
-                    </svg>
-                </a>
-                <!-- GitHub -->
-                <a href="https://github.com/Naveen-O-Hiremath" target="_blank" rel="noopener noreferrer"
-                    class="inline-flex items-center justify-center p-3 bg-slate-800 rounded-full text-slate-300 hover:text-white hover:bg-sky-600 transition-all shadow-lg"
-                    aria-label="GitHub Profile">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                        xmlns="http://www.w3.org/2000/svg" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <path
-                            d="M9 19c-4.3 1.4 -4.3-2.5 -6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6.1 0-1.3-.5-2.4-1.3-3.2.1-.3.5-1.5-.1-3.2 0 0-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1c-.6 1.7-.2 2.9-.1 3.2-.8.8-1.3 1.9-1.3 3.2 0 4.7 2.7 5.8 5.5 6.1-.6.5-.9 1.4-.9 2.8v4.1">
-                        </path>
-                    </svg>
-                </a>
-                <!-- Email -->
-                <a href="mailto:naveenhiremathlogs@gmail.com"
-                    class="inline-flex items-center justify-center p-3 bg-slate-800 rounded-full text-slate-300 hover:text-white hover:bg-sky-600 transition-all shadow-lg"
-                    aria-label="Email Naveen">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                        xmlns="http://www.w3.org/2000/svg" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <rect width="20" height="16" x="2" y="4" rx="2"></rect>
-                        <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
-                    </svg>
-                </a>
-                <!-- Download Resume -->
-                <a href="/files/Naveen_Hiremath_IT_Administrator_Resume.pdf" download
-                    class="inline-flex items-center justify-center p-3 bg-slate-800 rounded-full text-slate-300 hover:text-white hover:bg-sky-600 transition-all shadow-lg"
-                    aria-label="Download Resume">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                        xmlns="http://www.w3.org/2000/svg" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                        <polyline points="7 10 12 15 17 10"></polyline>
-                        <line x1="12" y1="15" x2="12" y2="3"></line>
-                    </svg>
-                </a>
-            </div>
-        </section>
+<!-- ════════════ ABOUT ════════════ -->
+<div class="wov" id="win-about">
+  <div class="wbd" onclick="closeW('about')"></div>
+  <div class="win" id="wb-about">
+    <div class="wbar"><div class="wbtns"><div class="wb2 wbr" onclick="closeW('about')">✕</div><div class="wb2 wby">−</div><div class="wb2 wbg">+</div></div><div class="wtitle">About Me</div></div>
+    <div class="wbody">
+      <div class="atop">
+        <div class="ava">🧑‍💻</div>
+        <div class="ainfo">
+          <h2>Naveen Hiremath</h2>
+          <div class="rpill">IT &amp; Cloud Administrator · Automation Engineer</div>
+          <p>Microsoft 365, Azure, and Cloud Administrator with 3+ years of experience in Microsoft 365, Azure &amp; Azure DevOps, Entra ID, Patch Management, and AWS. Skilled in workflow automation, cloud infra administration, and IT security &amp; SaaS Administration.</p>
+          <p style="margin-top:8px">Strong in PowerShell, Python, Power Automate, Intune, and SharePoint — delivering secure, scalable, and cost-efficient IT solutions. Recognised for creating thorough IT documentation, SOPs, and knowledge bases.</p>
+        </div>
+      </div>
+      <div class="chips">
+        <div class="chip">📍 Bengaluru, India</div>
+        <div class="chip">📧 <a href="mailto:naveenhiremathlogs@gmail.com">naveenhiremathlogs@gmail.com</a></div>
+        <div class="chip">📞 +91 8971285241</div>
+        <div class="chip">🌐 <a href="http://www.naveenhiremath.in" target="_blank">naveenhiremath.in</a></div>
+      </div>
+      <div class="stats">
+        <div class="stat"><div class="stn">3+</div><div class="stl">Years Experience</div></div>
+        <div class="stat"><div class="stn">200+</div><div class="stl">Users Managed</div></div>
+        <div class="stat"><div class="stn">70%</div><div class="stl">Manual Effort Saved</div></div>
+      </div>
+      <div class="sbox">🟢 Currently at <strong>Hector Beverages PVT LTD (PaperBoat)</strong> as IT &amp; Cloud Administrator</div>
+    </div>
+  </div>
+</div>
 
-        <!-- About Me Section -->
-        <section id="about" class="scroll-mt-20">
-            <h2 class="text-3xl sm:text-4xl font-bold text-white mb-8 text-center">
-                About Me
-            </h2>
-            <div
-                class="max-w-4xl mx-auto bg-slate-800/50 rounded-xl shadow-lg p-6 sm:p-8 ring-1 ring-slate-700/50 flex flex-col md:flex-row items-center gap-8 md:gap-12">
-                <!-- Image Column -->
-                <div
-                    class="flex-shrink-0 w-48 h-48 md:w-56 md:h-56 rounded-full overflow-hidden shadow-lg ring-4 ring-sky-500/50">
-                    <img src="/files/naveen_img_new.jpeg" alt="Naveen Hiremath"
-                        class="w-full h-full object-cover">
-                </div>
-                <!-- Text Column -->
-                <div class="flex-grow text-center md:text-left">
-                    <p class="text-lg sm:text-xl text-slate-300 leading-relaxed">
-                        Results-driven IT Administrator with 2+ years of experience in Microsoft 365, Azure DevOps,
-                        Entra ID, and AWS WorkSpaces. Skilled in automation, cloud administration, and IT security, with
-                        proven success in streamlining onboarding, license management, and asset tracking. Strong in
-                        PowerShell, Power Automate, Intune, and SharePoint, delivering secure, scalable, and
-                        cost-efficient IT solutions. Recognized for creating thorough IT documentation, SOPs, and
-                        knowledge bases that ensure consistency and efficiency.
-                    </p>
-                </div>
-            </div>
-        </section>
+<!-- ════════════ SKILLS ════════════ -->
+<div class="wov" id="win-skills">
+  <div class="wbd" onclick="closeW('skills')"></div>
+  <div class="win" id="wb-skills">
+    <div class="wbar"><div class="wbtns"><div class="wb2 wbr" onclick="closeW('skills')">✕</div><div class="wb2 wby">−</div><div class="wb2 wbg">+</div></div><div class="wtitle">Skills &amp; Expertise</div></div>
+    <div class="wbody">
+      <div class="tabs">
+        <div class="tab on" onclick="stab(this,'skills','cloud')">Cloud &amp; DevOps</div>
+        <div class="tab" onclick="stab(this,'skills','m365')">Microsoft 365</div>
+        <div class="tab" onclick="stab(this,'skills','auto')">Automation</div>
+        <div class="tab" onclick="stab(this,'skills','dev')">Development</div>
+      </div>
+      <div id="skills-cloud">
+        <div class="skrow"><div class="skmeta"><span class="sknm">Microsoft Azure (AZ-104)</span><span class="skpct">92%</span></div><div class="skbg"><div class="skf" data-p="92"></div></div></div>
+        <div class="skrow"><div class="skmeta"><span class="sknm">Google Cloud Platform / GKE</span><span class="skpct">82%</span></div><div class="skbg"><div class="skf" data-p="82"></div></div></div>
+        <div class="skrow"><div class="skmeta"><span class="sknm">AWS (WorkSpaces, VDI)</span><span class="skpct">75%</span></div><div class="skbg"><div class="skf" data-p="75"></div></div></div>
+        <div class="skrow"><div class="skmeta"><span class="sknm">Azure DevOps (VSTS)</span><span class="skpct">88%</span></div><div class="skbg"><div class="skf" data-p="88"></div></div></div>
+        <div class="skrow"><div class="skmeta"><span class="sknm">Docker / Kubernetes</span><span class="skpct">78%</span></div><div class="skbg"><div class="skf" data-p="78"></div></div></div>
+        <div style="margin-top:12px"><div class="schips"><span class="sc">Entra ID</span><span class="sc">RBAC</span><span class="sc">IAM</span><span class="sc g">GKE</span><span class="sc g">GCP IAM</span><span class="sc p">Azure DevOps</span><span class="sc y">AWS WorkSpaces</span></div></div>
+      </div>
+      <div id="skills-m365" style="display:none">
+        <div class="skrow"><div class="skmeta"><span class="sknm">Microsoft 365 Administration</span><span class="skpct">94%</span></div><div class="skbg"><div class="skf" data-p="94"></div></div></div>
+        <div class="skrow"><div class="skmeta"><span class="sknm">Entra ID / Azure AD</span><span class="skpct">91%</span></div><div class="skbg"><div class="skf" data-p="91"></div></div></div>
+        <div class="skrow"><div class="skmeta"><span class="sknm">Microsoft Intune (MDM/MAM)</span><span class="skpct">89%</span></div><div class="skbg"><div class="skf" data-p="89"></div></div></div>
+        <div class="skrow"><div class="skmeta"><span class="sknm">SharePoint Online</span><span class="skpct">87%</span></div><div class="skbg"><div class="skf" data-p="87"></div></div></div>
+        <div class="skrow"><div class="skmeta"><span class="sknm">Exchange Online / EXO</span><span class="skpct">85%</span></div><div class="skbg"><div class="skf" data-p="85"></div></div></div>
+        <div class="skrow"><div class="skmeta"><span class="sknm">Power BI</span><span class="skpct">76%</span></div><div class="skbg"><div class="skf" data-p="76"></div></div></div>
+        <div style="margin-top:12px"><div class="schips"><span class="sc">MFA</span><span class="sc">Conditional Access</span><span class="sc">Zero Trust</span><span class="sc p">Copilot Studio</span><span class="sc g">Power Automate</span><span class="sc y">Dataverse</span></div></div>
+      </div>
+      <div id="skills-auto" style="display:none">
+        <div class="skrow"><div class="skmeta"><span class="sknm">PowerShell Scripting</span><span class="skpct">90%</span></div><div class="skbg"><div class="skf" data-p="90"></div></div></div>
+        <div class="skrow"><div class="skmeta"><span class="sknm">Power Automate</span><span class="skpct">88%</span></div><div class="skbg"><div class="skf" data-p="88"></div></div></div>
+        <div class="skrow"><div class="skmeta"><span class="sknm">Python</span><span class="skpct">80%</span></div><div class="skbg"><div class="skf" data-p="80"></div></div></div>
+        <div class="skrow"><div class="skmeta"><span class="sknm">Copilot Studio AI Agents</span><span class="skpct">78%</span></div><div class="skbg"><div class="skf" data-p="78"></div></div></div>
+        <div class="skrow"><div class="skmeta"><span class="sknm">ITSM / ZenDesk</span><span class="skpct">84%</span></div><div class="skbg"><div class="skf" data-p="84"></div></div></div>
+      </div>
+      <div id="skills-dev" style="display:none">
+        <div class="skrow"><div class="skmeta"><span class="sknm">HTML / CSS / JavaScript</span><span class="skpct">80%</span></div><div class="skbg"><div class="skf" data-p="80"></div></div></div>
+        <div class="skrow"><div class="skmeta"><span class="sknm">PHP / MySQL</span><span class="skpct">68%</span></div><div class="skbg"><div class="skf" data-p="68"></div></div></div>
+        <div class="skrow"><div class="skmeta"><span class="sknm">React</span><span class="skpct">60%</span></div><div class="skbg"><div class="skf" data-p="60"></div></div></div>
+        <div class="skrow"><div class="skmeta"><span class="sknm">Flutter</span><span class="skpct">50%</span></div><div class="skbg"><div class="skf" data-p="50"></div></div></div>
+        <div class="skrow"><div class="skmeta"><span class="sknm">Figma</span><span class="skpct">55%</span></div><div class="skbg"><div class="skf" data-p="55"></div></div></div>
+        <div style="margin-top:12px"><div class="schips"><span class="sc">SQL</span><span class="sc g">Python</span><span class="sc p">React</span><span class="sc y">Figma</span></div></div>
+      </div>
+    </div>
+  </div>
+</div>
 
-        <!-- Skills Section -->
-        <section id="skills" class="scroll-mt-20">
-            <h2 class="text-3xl sm:text-4xl font-bold text-white mb-12 text-center">
-                Technical Skills
-            </h2>
-            <div class="space-y-10">
-                <!-- Skill Category -->
-                <div>
-                    <h3 class="text-2xl font-semibold text-sky-400 mb-5 text-center sm:text-left">Microsoft 365 &
-                        Security</h3>
-                    <div class="flex flex-wrap justify-center sm:justify-start gap-3">
-                        <span class="skill-pill">Exchange Online</span>
-                        <span class="skill-pill">Entra ID (Azure AD)</span>
-                        <span class="skill-pill">SharePoint Online</span>
-                        <span class="skill-pill">Office 365 Admin</span>
-                        <span class="skill-pill">Intune</span>
-                        <span class="skill-pill">MFA</span>
-                        <span class="skill-pill">Conditional Access</span>
-                        <span class="skill-pill">RBAC</span>
-                    </div>
-                </div>
+<!-- ════════════ EXPERIENCE ════════════ -->
+<div class="wov" id="win-experience">
+  <div class="wbd" onclick="closeW('experience')"></div>
+  <div class="win" id="wb-experience">
+    <div class="wbar"><div class="wbtns"><div class="wb2 wbr" onclick="closeW('experience')">✕</div><div class="wb2 wby">−</div><div class="wb2 wbg">+</div></div><div class="wtitle">Work Experience</div></div>
+    <div class="wbody">
+      <div class="tline">
+        <div class="tli">
+          <div class="tdot" style="background:var(--accent);box-shadow:0 0 12px var(--accent)"></div>
+          <div class="tco">Hector Beverages PVT LTD (PaperBoat) 🧃</div>
+          <div class="trole">IT &amp; Cloud Administrator</div>
+          <div class="tdate">Nov 2025 – Present · Bengaluru</div>
+          <ul class="tpts">
+            <li>Migrated core sales apps from GCP Compute Engine VMs to Google Kubernetes Engine (GKE) for cost efficiency.</li>
+            <li>Engineered IT inventory solution using SharePoint, Power Automate, Microsoft Dataverse &amp; Copilot Studio for real-time asset tracking.</li>
+            <li>Deployed custom Copilot AI Agent for self-service IT inventory queries and SharePoint data retrieval.</li>
+            <li>Automated user lifecycle — provisioning new joiners across Azure AD and cPanel instantly.</li>
+            <li>Administered end-to-end IAM services across the GCP environment.</li>
+            <li>Managed cloud security platforms: Kaspersky and CrowdStrike.</li>
+            <li>Created and launched the corporate SharePoint Intranet site.</li>
+          </ul>
+          <div class="ttags"><span class="ttag">GCP</span><span class="ttag">GKE</span><span class="ttag">Copilot Studio</span><span class="ttag">Power Automate</span><span class="ttag">Azure AD</span><span class="ttag">CrowdStrike</span></div>
+        </div>
+        <div class="tli">
+          <div class="tdot" style="background:var(--accent2);box-shadow:0 0 12px var(--accent2)"></div>
+          <div class="tco">Aurigo Software Technologies Pvt. Ltd.</div>
+          <div class="trole">IT Administrator</div>
+          <div class="tdate">Jan 2025 – Nov 2025 · Bengaluru</div>
+          <ul class="tpts">
+            <li>Administered Azure DevOps (VSTS): project creation, license management, user access for 200+ users.</li>
+            <li>Designed automated onboarding workflow reducing manual effort by <strong style="color:var(--accent)">70%</strong>.</li>
+            <li>Managed Microsoft 365 &amp; Entra ID: mailbox provisioning, license optimization, conditional access, MFA.</li>
+            <li>Built Power BI reports for asset utilisation and M365 license tracking.</li>
+            <li>Hands-on with AWS WorkSpaces: bundle creation, deployment, and automation for scalable VDI environments.</li>
+          </ul>
+          <div class="ttags"><span class="ttag">Azure DevOps</span><span class="ttag">M365</span><span class="ttag">Entra ID</span><span class="ttag">Power BI</span><span class="ttag">AWS WorkSpaces</span><span class="ttag">Intune</span></div>
+        </div>
+        <div class="tli">
+          <div class="tdot" style="background:var(--accent3);box-shadow:0 0 10px var(--accent3)"></div>
+          <div class="tco">Aurigo Software Technologies Pvt. Ltd.</div>
+          <div class="trole">Associate IT Administrator</div>
+          <div class="tdate">May 2023 – Jan 2025 · Bengaluru</div>
+          <ul class="tpts">
+            <li>Monitored &amp; remediated system vulnerabilities using Microsoft Defender.</li>
+            <li>Automated software deployment &amp; policy enforcement using Microsoft Intune.</li>
+            <li>Designed SharePoint sites with Power Automate flows for process automation.</li>
+            <li>Optimized M365 license usage — reduced unused subscriptions by <strong style="color:var(--accent3)">15% annually</strong>.</li>
+            <li>Resolved ITSM incidents via ZenDesk — achieved <strong style="color:var(--accent3)">95% SLA compliance</strong>.</li>
+          </ul>
+          <div class="ttags"><span class="ttag">Intune</span><span class="ttag">Defender</span><span class="ttag">SharePoint</span><span class="ttag">Active Directory</span><span class="ttag">ZenDesk</span><span class="ttag">PowerShell</span></div>
+        </div>
+        <div class="tli">
+          <div class="tdot" style="background:var(--accent4);box-shadow:0 0 10px var(--accent4)"></div>
+          <div class="tco">Aurigo Software Technologies Pvt. Ltd.</div>
+          <div class="trole">Intern — Enterprise IT</div>
+          <div class="tdate">Nov 2022 – May 2023 · Bengaluru</div>
+          <ul class="tpts">
+            <li>Installation, configuration and troubleshooting of OS and corporate applications.</li>
+            <li>Assisted in asset inventory management — tracking hardware and software assets.</li>
+            <li>Managed CCTV monitoring, backup, and basic network configuration.</li>
+            <li>Audio-Visual conference setup for Zoom &amp; Teams Rooms.</li>
+          </ul>
+          <div class="ttags"><span class="ttag">IT Support</span><span class="ttag">Networking</span><span class="ttag">AV Setup</span><span class="ttag">Asset Mgmt</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
-                <!-- Skill Category -->
-                <div>
-                    <h3 class="text-2xl font-semibold text-sky-400 mb-5 text-center sm:text-left">DevOps & Cloud</h3>
-                    <div class="flex flex-wrap justify-center sm:justify-start gap-3">
-                        <span class="skill-pill">Azure DevOps (VSTS)</span>
-                        <span class="skill-pill">AWS WorkSpaces</span>
-                        <span class="skill-pill">EC2 (basics)</span>
-                        <span class="skill-pill">S3 (basics)</span>
-                        <span class="skill-pill">License & Project Administration</span>
-                    </div>
-                </div>
+<!-- ════════════ PROJECTS ════════════ -->
+<div class="wov" id="win-projects">
+  <div class="wbd" onclick="closeW('projects')"></div>
+  <div class="win" id="wb-projects">
+    <div class="wbar"><div class="wbtns"><div class="wb2 wbr" onclick="closeW('projects')">✕</div><div class="wb2 wby">−</div><div class="wb2 wbg">+</div></div><div class="wtitle">Projects &amp; Initiatives</div></div>
+    <div class="wbody">
+      <div class="pgrid">
+        <div class="pc"><div class="pico">🤖</div><div class="pnm">Copilot AI Agent — IT Inventory</div><div class="pdesc">Deployed a custom Microsoft Copilot AI Agent for self-service IT inventory queries and SharePoint document library retrieval at PaperBoat.</div><div class="pstack"><span class="pt">Copilot Studio</span><span class="pt">SharePoint</span><span class="pt">Dataverse</span></div></div>
+        <div class="pc"><div class="pico">⚙️</div><div class="pnm">Auto-Onboarding Workflow</div><div class="pdesc">Full lifecycle automation — provisions Azure AD, assigns M365 licenses, updates inventory, adds to groups, triggers checklists — 70% effort saved.</div><div class="pstack"><span class="pt">Power Automate</span><span class="pt">Azure AD</span><span class="pt">PowerShell</span></div></div>
+        <div class="pc"><div class="pico">☁️</div><div class="pnm">GCP → GKE Migration</div><div class="pdesc">Migrated core sales applications and data from GCP Compute Engine VMs to Google Kubernetes Engine, improving scalability and reducing costs.</div><div class="pstack"><span class="pt">GCP</span><span class="pt">Kubernetes</span><span class="pt">Docker</span></div></div>
+        <div class="pc"><div class="pico">📊</div><div class="pnm">Power BI Asset Dashboard</div><div class="pdesc">Built real-time Power BI dashboards for asset utilisation and M365 license tracking, enabling data-driven cost-optimisation insights.</div><div class="pstack"><span class="pt">Power BI</span><span class="pt">M365</span><span class="pt">Dataverse</span></div></div>
+        <div class="pc"><div class="pico">🏢</div><div class="pnm">SharePoint Intranet Portal</div><div class="pdesc">Designed and launched a centralised corporate SharePoint Intranet site with integrated Power Automate flows for internal comms.</div><div class="pstack"><span class="pt">SharePoint</span><span class="pt">Power Automate</span><span class="pt">M365</span></div></div>
+        <div class="pc"><div class="pico">🩸</div><div class="pnm">BloodLink — Academic Project</div><div class="pdesc">Web application to track and contact blood donors online. Built with HTML, CSS, JavaScript, PHP and MySQL for final year BCA project.</div><div class="pstack"><span class="pt">PHP</span><span class="pt">MySQL</span><span class="pt">JavaScript</span></div></div>
+      </div>
+    </div>
+  </div>
+</div>
 
-                <!-- Skill Category -->
-                <div>
-                    <h3 class="text-2xl font-semibold text-sky-400 mb-5 text-center sm:text-left">Automation & Scripting
-                    </h3>
-                    <div class="flex flex-wrap justify-center sm:justify-start gap-3">
-                        <span class="skill-pill">PowerShell</span>
-                        <span class="skill-pill">Power Automate</span>
-                        <span class="skill-pill">Python (basic)</span>
-                        <span class="skill-pill">Microsoft Graph API</span>
-                        <span class="skill-pill">REST APIs</span>
-                    </div>
-                </div>
+<!-- ════════════ CERTS ════════════ -->
+<div class="wov" id="win-certs">
+  <div class="wbd" onclick="closeW('certs')"></div>
+  <div class="win" id="wb-certs">
+    <div class="wbar"><div class="wbtns"><div class="wb2 wbr" onclick="closeW('certs')">✕</div><div class="wb2 wby">−</div><div class="wb2 wbg">+</div></div><div class="wtitle">Certifications &amp; Education</div></div>
+    <div class="wbody">
+      <div class="cgrid">
+        <div class="ccard"><div class="cico">🔷</div><div><div class="cnm">Microsoft Certified: Azure Administrator Associate</div><div class="csub">AZ-104 · Microsoft</div></div><div class="cbadge earned">✓ Earned</div></div>
+        <div class="ccard" style="border-color:rgba(251,191,36,.15)"><div class="cico">🟡</div><div><div class="cnm">AWS Certified Solutions Architect — Associate</div><div class="csub">Amazon Web Services</div></div><div class="cbadge planned">Planned</div></div>
+        <div class="ccard" style="border-color:rgba(251,191,36,.15)"><div class="cico">🖥️</div><div><div class="cnm">CompTIA A+</div><div class="csub">CompTIA — IT Fundamentals &amp; Support</div></div><div class="cbadge planned">Planned</div></div>
+      </div>
+      <div style="margin-top:18px;padding:14px;background:rgba(56,189,248,.04);border:1px solid rgba(56,189,248,.12);border-radius:12px;">
+        <div style="font-size:12px;font-weight:700;color:var(--accent);margin-bottom:6px">🎓 Education</div>
+        <div style="font-size:13px;color:var(--tp);font-weight:700">Bachelor of Computer Applications (BCA)</div>
+        <div style="font-size:12px;color:var(--ts);margin-top:2px">JSSSTC BCA College, Banahatti · Rani Channamma University</div>
+        <div style="font-size:11px;color:var(--accent2);margin-top:2px">2019 – 2022 · CGPA: 8.3</div>
+      </div>
+      <div style="margin-top:10px;padding:12px;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);border-radius:12px;">
+        <div style="font-size:12px;font-weight:700;color:var(--accent3);margin-bottom:4px">📚 Pre-University Education</div>
+        <div style="font-size:12px;color:var(--ts)">BLDEA's Science College, Jamkhandi, Bagalkote</div>
+        <div style="font-size:11px;color:var(--ts);margin-top:1px">Karnataka State PU Board · 2016 – 2018</div>
+      </div>
+    </div>
+  </div>
+</div>
 
-                <!-- Skill Category -->
-                <div>
-                    <h3 class="text-2xl font-semibold text-sky-400 mb-5 text-center sm:text-left">Core IT & Other</h3>
-                    <div class="flex flex-wrap justify-center sm:justify-start gap-3">
-                        <span class="skill-pill">Windows Administration</span>
-                        <span class="skill-pill">Active Directory</span>
-                        <span class="skill-pill">Asset Management</span>
-                        <span class="skill-pill">IT Onboarding/Offboarding</span>
-                        <span class="skill-pill">Power BI Dashboards</span>
-                        <span class="skill-pill">Audit & Compliance Reporting</span>
-                        <span class="skill-pill">Documentation & SOPs</span>
-                        <span class="skill-pill">Knowledge Management</span>
-                    </div>
-                </div>
-            </div>
-        </section>
+<!-- ════════════ RESUME ════════════ -->
+<div class="wov" id="win-resume">
+  <div class="wbd" onclick="closeW('resume')"></div>
+  <div class="win" id="wb-resume">
+    <div class="wbar"><div class="wbtns"><div class="wb2 wbr" onclick="closeW('resume')">✕</div><div class="wb2 wby">−</div><div class="wb2 wbg">+</div></div><div class="wtitle">Résumé</div></div>
+    <div class="wbody">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px">
+        <div><div style="font-size:20px;font-weight:800;font-family:'Space Grotesk',sans-serif">Naveen Hiremath</div><div style="font-size:12px;color:var(--ts);margin-top:3px">naveenhiremathlogs@gmail.com · +91 8971285241 · Bengaluru 560037</div></div>
+        <button class="bsend" style="padding:9px 18px;font-size:12px;width:auto;border-radius:9px" onclick="openLink('http://www.naveenhiremath.in')">View Full CV ↗</button>
+      </div>
+      <div class="rsec"><h4>Professional Summary</h4><p style="font-size:12px;color:var(--ts);line-height:1.7">Microsoft 365, Azure, and Cloud Administrator with 3+ years of experience. Strong in PowerShell, Python, Power Automate, Intune, and SharePoint — delivering secure, scalable, cost-efficient IT solutions.</p></div>
+      <div class="rsec">
+        <h4>Experience</h4>
+        <div style="margin-bottom:9px"><div class="rrow"><div><div class="ritem">IT &amp; Cloud Administrator</div><div class="rsub">Hector Beverages PVT LTD (PaperBoat)</div></div><div class="rdate">Nov 2025 – Present</div></div></div>
+        <div style="margin-bottom:9px"><div class="rrow"><div><div class="ritem">IT Administrator</div><div class="rsub">Aurigo Software Technologies Pvt. Ltd.</div></div><div class="rdate">Jan 2025 – Nov 2025</div></div></div>
+        <div style="margin-bottom:9px"><div class="rrow"><div><div class="ritem">Associate IT Administrator</div><div class="rsub">Aurigo Software Technologies Pvt. Ltd.</div></div><div class="rdate">May 2023 – Jan 2025</div></div></div>
+        <div><div class="rrow"><div><div class="ritem">Intern — Enterprise IT</div><div class="rsub">Aurigo Software Technologies Pvt. Ltd.</div></div><div class="rdate">Nov 2022 – May 2023</div></div></div>
+      </div>
+      <div class="rsec"><h4>Technical Skills</h4><div style="font-size:12px;color:var(--ts);line-height:1.9"><strong style="color:var(--tp)">Cloud:</strong> Azure, AWS, GCP, Docker, Kubernetes, Azure DevOps<br><strong style="color:var(--tp)">Microsoft 365:</strong> Exchange Online, Entra ID, Intune, SharePoint, Power Automate, Power BI<br><strong style="color:var(--tp)">Security:</strong> MFA, Conditional Access, RBAC, Zero Trust, CrowdStrike, Kaspersky, Defender<br><strong style="color:var(--tp)">Automation:</strong> PowerShell, Python, Power Automate, Copilot Studio<br><strong style="color:var(--tp)">Dev:</strong> HTML, CSS, JS, PHP, SQL, Python, React, Flutter, Figma</div></div>
+      <div class="rsec"><h4>Education &amp; Certifications</h4>
+        <div class="rrow"><div class="ritem">BCA · Rani Channamma University · CGPA 8.3</div><div class="rdate">2019–2022</div></div>
+        <div class="rrow" style="margin-top:5px"><div class="ritem">Microsoft Certified Azure Administrator (AZ-104)</div><div class="rdate">✓ Earned</div></div>
+      </div>
+    </div>
+  </div>
+</div>
 
-        <!-- Custom CSS for skill pills -->
-        <style>
-            .skill-pill {
-                @apply bg-slate-800 text-sky-300 text-sm font-medium px-4 py-2 rounded-full shadow-sm ring-1 ring-slate-700/50;
-            }
-        </style>
+<!-- ════════════ SOCIAL ════════════ -->
+<div class="wov" id="win-social">
+  <div class="wbd" onclick="closeW('social')"></div>
+  <div class="win" id="wb-social">
+    <div class="wbar"><div class="wbtns"><div class="wb2 wbr" onclick="closeW('social')">✕</div><div class="wb2 wby">−</div><div class="wb2 wbg">+</div></div><div class="wtitle">Social Links</div></div>
+    <div class="wbody">
+      <div class="sgrid">
+        <div class="scard" onclick="openLink('https://github.com/Naveen-O-Hiremath')"><div class="sico" style="background:rgba(255,255,255,.07)">🐙</div><div><div class="snm">GitHub</div><div class="shdl">Naveen-O-Hiremath</div></div></div>
+        <div class="scard" onclick="openLink('https://linkedin.com/in/naveen-hiremath-aa0b44246')"><div class="sico" style="background:rgba(10,102,194,.18)">💼</div><div><div class="snm">LinkedIn</div><div class="shdl">naveen-hiremath-aa0b44246</div></div></div>
+        <div class="scard" onclick="openLink('http://www.naveenhiremath.in')"><div class="sico" style="background:rgba(56,189,248,.14)">🌐</div><div><div class="snm">Website</div><div class="shdl">www.naveenhiremath.in</div></div></div>
+        <div class="scard" onclick="openLink('mailto:naveenhiremathlogs@gmail.com')"><div class="sico" style="background:rgba(234,67,53,.15)">📧</div><div><div class="snm">Email</div><div class="shdl">naveenhiremathlogs@gmail.com</div></div></div>
+        <div class="scard" onclick="showNotif('📞','Contact','+91 8971285241')"><div class="sico" style="background:rgba(37,211,102,.14)">📱</div><div><div class="snm">Phone / WhatsApp</div><div class="shdl">+91 8971285241</div></div></div>
+        <div class="scard" onclick="showNotif('📍','Location','Bengaluru, Karnataka 560037 🇮🇳')"><div class="sico" style="background:rgba(251,191,36,.12)">📍</div><div><div class="snm">Location</div><div class="shdl">Bengaluru, India</div></div></div>
+      </div>
+    </div>
+  </div>
+</div>
 
-        <!-- Experience Section (Timeline) -->
-        <section id="experience" class="scroll-mt-20">
-            <h2 class="text-3xl sm:text-4xl font-bold text-white mb-12 text-center">
-                Work Experience
-            </h2>
-            <div class="relative max-w-3xl mx-auto">
-                <!-- Vertical Timeline Bar -->
-                <div class="absolute left-3 sm:left-1/2 top-0 h-full w-0.5 bg-slate-700 -translate-x-1/2"></div>
+<!-- ════════════ CONTACT ════════════ -->
+<div class="wov" id="win-contact">
+  <div class="wbd" onclick="closeW('contact')"></div>
+  <div class="win" id="wb-contact">
+    <div class="wbar"><div class="wbtns"><div class="wb2 wbr" onclick="closeW('contact')">✕</div><div class="wb2 wby">−</div><div class="wb2 wbg">+</div></div><div class="wtitle">Send a Message</div></div>
+    <div class="wbody">
+      <p style="font-size:14px;color:var(--ts);margin-bottom:20px;line-height:1.7">Have a project, collaboration, or want to connect? Open to cloud, automation, and IT discussions. 🚀</p>
+      <div class="fg"><label>YOUR NAME</label><input type="text" placeholder="Jane Smith"></div>
+      <div class="fg"><label>EMAIL</label><input type="email" placeholder="jane@company.com"></div>
+      <div class="fg"><label>SUBJECT</label><input type="text" placeholder="Cloud migration consultation"></div>
+      <div class="fg"><label>MESSAGE</label><textarea placeholder="Tell me about your project or opportunity..."></textarea></div>
+      <button class="bsend" onclick="handleSend()">Send Message →</button>
+    </div>
+  </div>
+</div>
 
-                <!-- Experience Item 1 -->
-                <div class="relative mb-12">
-                    <div
-                        class="absolute left-3 sm:left-1/2 top-1.5 w-6 h-6 bg-sky-500 rounded-full border-4 border-slate-900 -translate-x-1/2">
-                    </div>
-                    <div class="ml-10 sm:ml-0 sm:w-5/12 sm:pl-8 sm:pr-4 sm:text-right">
-                        <p class="text-base font-medium text-sky-400 mb-1">Jan 2025 - Present</p>
-                        <h3 class="text-2xl font-bold text-white">IT Administrator</h3>
-                        <p class="text-lg text-slate-400">Aurigo Software Technologies (p) Ltd</p>
-                    </div>
-                    <div class="sm:w-1/2 sm:pl-12 sm:pr-4">
-                        <ul class="list-disc list-outside ml-10 sm:ml-5 mt-4 sm:mt-0 space-y-2 text-slate-300">
-                            <li>Administer Azure DevOps (VSTS) portal: project creation, license management, user
-                                access, and security configuration for 200+ users.</li>
-                            <li>Designed and implemented an automated employee onboarding workflow, reducing manual
-                                effort by 70%.</li>
-                            <li>Managed Microsoft 365 & Entra ID: mailbox provisioning, license optimization,
-                                conditional access, MFA, and group administration.</li>
-                            <li>Automated application deployment and device compliance via Intune.</li>
-                            <li>Built Power BI reports for asset utilization and license tracking.</li>
-                            <li>Created comprehensive IT documentation including SOPs, runbooks, and knowledge bases.
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+<!-- ════════════ TERMINAL ════════════ -->
+<div class="wov" id="win-terminal">
+  <div class="wbd" onclick="closeW('terminal')"></div>
+  <div class="win twin" id="wb-terminal">
+    <div class="wbar tbar2">
+      <div class="wbtns"><div class="wb2 wbr" onclick="closeW('terminal')">✕</div><div class="wb2 wby">−</div><div class="wb2 wbg">+</div></div>
+      <div class="wtitle" style="font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--tc)">naveen@portfolio-os ~ bash</div>
+    </div>
+    <div class="tbody" id="tbody">
+      <div class="tout" id="tout"></div>
+      <div class="tinrow">
+        <span class="tprlbl" id="tprlbl">naveen@portfolio-os:~$ </span>
+        <input class="tinp" id="tinp" autocomplete="off" spellcheck="false" placeholder="type 'help' to begin...">
+      </div>
+    </div>
+  </div>
+</div>
 
-                <!-- Experience Item 2 -->
-                <div class="relative mb-12">
-                    <div
-                        class="absolute left-3 sm:left-1/2 top-1.5 w-6 h-6 bg-sky-500 rounded-full border-4 border-slate-900 -translate-x-1/2">
-                    </div>
-                    <div class="ml-10 sm:ml-0 sm:w-5/12 sm:pl-8 sm:pr-4 sm:text-right sm:float-right">
-                        <p class="text-base font-medium text-sky-400 mb-1">May 2023 - Jan 2025</p>
-                        <h3 class="text-2xl font-bold text-white">Associate IT Administrator</h3>
-                        <p class="text-lg text-slate-400">Aurigo Software Technologies (p) Ltd</p>
-                    </div>
-                    <div class="sm:w-1/2 sm:pl-4 sm:pr-12 sm:float-left sm:text-right">
-                        <ul
-                            class="list-disc list-outside ml-10 sm:ml-0 sm:list-none mt-4 sm:mt-0 space-y-2 text-slate-300">
-                            <li>Monitored and remediated system vulnerabilities using Microsoft Defender.</li>
-                            <li>Automated software deployment and policy enforcement using Microsoft Intune.</li>
-                            <li>Designed and managed SharePoint sites, integrating Power Automate flows.</li>
-                            <li>Developed PowerShell scripts for automated software installation and system
-                                administration.</li>
-                            <li>Created and maintained knowledge bases, user manuals, and audit documentation.</li>
-                            <li>Optimized Microsoft 365 license usage, reducing unused subscriptions by 15%.</li>
-                            <li>Resolved ITSM incidents and service requests within SLA using ZenDesk (95% compliance).
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="clear-both"></div> <!-- Clear float -->
-                </div>
+<!-- SPOTLIGHT -->
+<div class="spov" id="spotlight" onclick="closeSp(event)">
+  <div class="spbox" onclick="event.stopPropagation()">
+    <div class="spwrap"><span class="spico">🔍</span><input class="spinp" id="spinp" placeholder="Search portfolio..." oninput="filtSp(this.value)" onkeydown="spKey(event)"></div>
+    <div class="spres" id="spres"></div>
+  </div>
+</div>
 
-                <!-- Experience Item 3 -->
-                <div class="relative mb-12">
-                    <div
-                        class="absolute left-3 sm:left-1/2 top-1.5 w-6 h-6 bg-sky-500 rounded-full border-4 border-slate-900 -translate-x-1/2">
-                    </div>
-                    <div class="ml-10 sm:ml-0 sm:w-5/12 sm:pl-8 sm:pr-4 sm:text-right">
-                        <p class="text-base font-medium text-sky-400 mb-1">Nov 2022 - May 2023</p>
-                        <h3 class="text-2xl font-bold text-white">Intern - Enterprise IT</h3>
-                        <p class="text-lg text-slate-400">Aurigo Software Technologies (p) Ltd</p>
-                    </div>
-                    <div class="sm:w-1/2 sm:pl-12 sm:pr-4">
-                        <ul class="list-disc list-outside ml-10 sm:ml-5 mt-4 sm:mt-0 space-y-2 text-slate-300">
-                            <li>Installation, configuration, and troubleshooting of operating systems and corporate
-                                applications.</li>
-                            <li>Assisted in asset inventory management, tracking hardware and software.</li>
-                            <li>Managed CCTV monitoring, backup, and basic network configuration.</li>
-                            <li>Handled attendance data maintenance and Audio-Visual conference setup.</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
+<script>
+// CLOCK
+function tick(){document.getElementById('clk').textContent=new Date().toLocaleTimeString('en-US',{hour:'numeric',minute:'2-digit',hour12:true});}
+tick();setInterval(tick,1000);
 
+// LOADING BAR
+window.addEventListener('load',()=>{const b=document.getElementById('lbar');let w=0;const t=setInterval(()=>{w+=25;b.style.width=w+'%';if(w>=100){clearInterval(t);setTimeout(()=>b.style.opacity=0,400);}},100);});
 
-        <!-- Projects Section -->
-        <section id="projects" class="scroll-mt-20">
-            <h2 class="text-3xl sm:text-4xl font-bold text-white mb-12 text-center">
-                Projects
-            </h2>
-            <div class="max-w-2xl mx-auto">
-                <div class="bg-slate-800 rounded-xl shadow-lg overflow-hidden ring-1 ring-slate-700/50">
-                    <div class="p-6 sm:p-8">
-                        <h3 class="text-2xl font-bold text-white">Online Blood Donor Tracker</h3>
-                        <p class="text-base text-sky-400 mt-1">College Group Project</p>
-                        <p class="text-slate-300 mt-4 leading-relaxed">
-                            Developed a web application to track and contact blood donors online, aimed at streamlining
-                            the process of connecting patients with available donors in their vicinity.
-                        </p>
-                        <div class="mt-5 flex flex-wrap gap-3">
-                            <span class="skill-pill">HTML</span>
-                            <span class="skill-pill">CSS</span>
-                            <span class="skill-pill">JavaScript</span>
-                            <span class="skill-pill">PHP</span>
-                            <span class="skill-pill">MySQL</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+// ── WINDOWS ──
+const openW_set=new Set();
+function openW(id){
+  const ov=document.getElementById('win-'+id),bx=document.getElementById('wb-'+id);
+  if(!ov)return;
+  ov.classList.add('on');bx&&bx.classList.remove('closing');
+  openW_set.add(id);
+  if(id==='skills')setTimeout(animBars,80);
+  if(id==='terminal')setTimeout(()=>{if(!tBooted){bootTerm();tBooted=true;}tinpFocus();},120);
+}
+function closeW(id){
+  const ov=document.getElementById('win-'+id),bx=document.getElementById('wb-'+id);
+  if(!ov)return;
+  bx&&bx.classList.add('closing');
+  setTimeout(()=>{ov.classList.remove('on');bx&&bx.classList.remove('closing');},220);
+  openW_set.delete(id);
+}
 
-        <!-- Education & Certifications Section -->
-        <section id="education" class="scroll-mt-20">
-            <h2 class="text-3xl sm:text-4xl font-bold text-white mb-12 text-center">
-                Education & Certifications
-            </h2>
-            <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-                <!-- Education Card -->
-                <div class="bg-slate-800 p-6 sm:p-8 rounded-xl shadow-lg ring-1 ring-slate-700/50">
-                    <h3 class="text-2xl font-bold text-white">Education</h3>
-                    <div class="mt-6 space-y-5">
-                        <div>
-                            <h4 class="text-xl font-semibold text-sky-400">Bachelor of Computer Applications</h4>
-                            <p class="text-slate-300 mt-1">JSS STC BBA and BCA College, Banahatti</p>
-                            <p class="text-sm text-slate-400">2019 - 2022 | Rani Channamma University</p>
-                            <p class="text-sm text-slate-400 mt-1">CGPA: 8.3</p>
-                        </div>
-                        <div>
-                            <h4 class="text-xl font-semibold text-sky-400">PUC (Science)</h4>
-                            <p class="text-slate-300 mt-1">BLDEA's Science College, Jamkhandi</p>
-                            <p class="text-sm text-slate-400">2016 - 2018 | Karnataka State PU Board</p>
-                        </div>
-                    </div>
-                </div>
-                <!-- Certifications Card -->
-                <div class="bg-slate-800 p-6 sm:p-8 rounded-xl shadow-lg ring-1 ring-slate-700/50">
-                    <h3 class="text-2xl font-bold text-white">Planned Certifications</h3>
-                    <ul class="mt-6 list-disc list-outside ml-5 space-y-3 text-slate-300 text-lg">
-                        <li>Microsoft Azure Fundamentals (AZ-900)</li>
-                        <li>AWS Certified Cloud Practitioner</li>
-                        <li>AWS Solutions Architect Associate (SAA-C03)</li>
-                        <li>CompTIA A+</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
+// SKILL BARS
+function animBars(){document.querySelectorAll('.skf:not(.done)').forEach(b=>{b.style.width=b.getAttribute('data-p')+'%';b.classList.add('done');});}
 
-        <!-- Contact Section -->
-        <section id="contact" class="scroll-mt-20">
-            <h2 class="text-3xl sm:text-4xl font-bold text-white mb-8 text-center">
-                Get In Touch
-            </h2>
-            <div class="max-w-lg mx-auto text-center">
-                <p class="text-lg text-slate-300 mb-10">
-                    I'm currently open to new opportunities and collaborations. Feel free to reach out via email or
-                    connect with me on LinkedIn.
-                </p>
-                <div class="space-y-6">
-                    <!-- Email -->
-                    <a href="mailto:naveenhiremathlogs@gmail.com"
-                        class="flex items-center justify-center p-4 bg-slate-800 rounded-lg text-lg text-slate-300 hover:text-white hover:bg-sky-600 transition-all shadow-lg ring-1 ring-slate-700/50">
-                        <svg class="w-6 h-6 mr-3 text-sky-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg" stroke-width="2" stroke-linecap="round"
-                            stroke-linejoin="round">
-                            <rect width="20" height="16" x="2" y="4" rx="2"></rect>
-                            <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
-                        </svg>
-                        naveenhiremathlogs@gmail.com
-                    </a>
-                    <!-- Phone -->
-                    <a href="tel:+918971285241"
-                        class="flex items-center justify-center p-4 bg-slate-800 rounded-lg text-lg text-slate-300 hover:text-white hover:bg-sky-600 transition-all shadow-lg ring-1 ring-slate-700/50">
-                        <svg class="w-6 h-6 mr-3 text-sky-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg" stroke-width="2" stroke-linecap="round"
-                            stroke-linejoin="round">
-                            <path
-                                d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.63A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
-                            </path>
-                        </svg>
-                        +91 8971285241
-                    </a>
-                    <!-- Location -->
-                    <div
-                        class="flex items-center justify-center p-4 bg-slate-800 rounded-lg text-lg text-slate-300 shadow-lg ring-1 ring-slate-700/50">
-                        <svg class="w-6 h-6 mr-3 text-sky-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg" stroke-width="2" stroke-linecap="round"
-                            stroke-linejoin="round">
-                            <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
-                            <circle cx="12" cy="10" r="3"></circle>
-                        </svg>
-                        Bengaluru, Karnataka, India
-                    </div>
-                </div>
-            </div>
-        </section>
+// TABS
+function stab(el,win,tab){
+  el.parentElement.querySelectorAll('.tab').forEach(t=>t.classList.remove('on'));el.classList.add('on');
+  ['cloud','m365','auto','dev'].forEach(p=>{const pn=document.getElementById(win+'-'+p);if(pn)pn.style.display='none';});
+  const tgt=document.getElementById(win+'-'+tab);if(tgt){tgt.style.display='block';setTimeout(animBars,40);}
+}
 
-    </main>
+// NOTIFICATION
+let nfT;
+function showNotif(ico,title,body){
+  const ex=document.querySelector('.notif');if(ex)ex.remove();clearTimeout(nfT);
+  const n=document.createElement('div');n.className='notif';
+  n.innerHTML=`<div class="nfico">${ico}</div><div><div class="nftitle">${title}</div><div class="nfbody">${body}</div></div>`;
+  document.body.appendChild(n);
+  nfT=setTimeout(()=>{n.style.opacity='0';n.style.transform='translateX(40px)';n.style.transition='all .3s';setTimeout(()=>n.remove(),300);},3200);
+}
+function openLink(url){showNotif('🔗','Opening link',url.replace('mailto:','Email: '));window.open(url,'_blank');}
+function handleSend(){showNotif('✅','Message Sent!','Thanks! I\'ll get back to you within 24h.');closeW('contact');}
 
-    <!-- Footer -->
-    <footer class="text-center py-10 mt-24 sm:mt-32 border-t border-slate-700/50 text-slate-500">
-        <p>&copy; 2025 Naveen Hiremath. All rights reserved.</p>
-        <p class="text-sm mt-2">Built with HTML & Tailwind CSS.</p>
-    </footer>
+// SPOTLIGHT
+const spItems=[
+  {ico:'👤',label:'About Me',id:'about'},{ico:'⚡',label:'Skills',id:'skills'},
+  {ico:'💼',label:'Work Experience',id:'experience'},{ico:'🚀',label:'Projects',id:'projects'},
+  {ico:'🏅',label:'Certifications',id:'certs'},{ico:'⌨️',label:'Terminal',id:'terminal'},
+  {ico:'📄',label:'Résumé',id:'resume'},{ico:'🌐',label:'Social Links',id:'social'},
+  {ico:'✉️',label:'Contact Me',id:'contact'},
+];
+function openSpot(){document.getElementById('spotlight').classList.add('on');setTimeout(()=>document.getElementById('spinp').focus(),50);renderSp(spItems);}
+function closeSp(e){document.getElementById('spotlight').classList.remove('on');document.getElementById('spinp').value='';renderSp(spItems);}
+function filtSp(q){renderSp(q?spItems.filter(i=>i.label.toLowerCase().includes(q.toLowerCase())):spItems);}
+function renderSp(items){document.getElementById('spres').innerHTML=items.map((it,i)=>`<div class="spri${i===0?' active':''}" onclick="fromSp('${it.id}')"><span class="sprii">${it.ico}</span>${it.label}</div>`).join('');}
+function fromSp(id){document.getElementById('spotlight').classList.remove('on');openW(id);}
+function spKey(e){if(e.key==='Escape')closeSp();if(e.key==='Enter'){const a=document.querySelector('.spri.active');if(a)a.click();}}
+document.addEventListener('keydown',e=>{
+  if((e.metaKey||e.ctrlKey)&&e.key==='k'){e.preventDefault();openSpot();}
+  if(e.key==='Escape'){closeSp();openW_set.forEach(id=>closeW(id));}
+});
 
+// ═══════════════════════════════════════════════════
+//  TERMINAL ENGINE
+// ═══════════════════════════════════════════════════
+let tBooted=false;
+let tHistory=[],tHistIdx=-1;
+const tout=document.getElementById('tout');
+const tinp=document.getElementById('tinp');
+
+function tinpFocus(){tinp.focus();}
+document.getElementById('tbody').addEventListener('click',tinpFocus);
+
+function aLine(html,cls=''){const p=document.createElement('p');p.className='tline2 '+cls;p.innerHTML=html;tout.appendChild(p);}
+function aRaw(html){const d=document.createElement('div');d.innerHTML=html;tout.appendChild(d);}
+function aBlank(){aLine('&nbsp;');}
+function tScroll(){const b=document.getElementById('tbody');b.scrollTop=b.scrollHeight;}
+
+function bootTerm(){
+  aRaw(`<pre class="tascii">
+ _   _                           _   _ _                     _   _     ___  ____
+| \\ | | __ ___   _____ ___ __   | \\ | | |__   ___ _ __ ___  | \\ | |  / _ \\/ ___|
+|  \\| |/ _\` \\ \\ / / _ \\ '__/ _ \\|  \\| | '_ \\ / _ \\ '__/ _ \\ |  \\| | | | | \\__ \\
+| |\\  | (_| |\\ V /  __/ | |  __/| |\\  | | | |  __/ | |  __/ | |\\  | | |_| |___) |
+|_| \\_|\\__,_| \\_/ \\___|_|  \\___|_| \\_|_| |_|\\___|_|  \\___| |_| \\_|  \\___/|____/
+</pre>`);
+  aLine(`<span class="tg" style="font-weight:700">Portfolio OS v3.1.0</span>  <span class="td">// PowerShell · Azure · GCP · Bengaluru, India 🇮🇳</span>`);
+  aLine(`<span class="td">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span>`);
+  aLine(`<span class="tc2">System :</span>  <span class="tw">Naveen.OS — IT &amp; Cloud Administrator Portfolio</span>`);
+  aLine(`<span class="tc2">User   :</span>  <span class="ty" style="font-weight:700">naveen</span> <span class="td">(naveenhiremathlogs@gmail.com)</span>`);
+  aLine(`<span class="tc2">Status :</span>  <span class="tg">● Active</span>  <span class="td">— Currently @ PaperBoat 🧃 | Nov 2025 – Present</span>`);
+  aLine(`<span class="tc2">AZ-104 :</span>  <span class="tg">✓ Microsoft Certified Azure Administrator</span>`);
+  aLine(`<span class="tc2">Shell  :</span>  <span class="tw">portfolio-bash 5.2 (PowerShell-flavoured)</span>`);
+  aBlank();
+  aLine(`<span class="ty" style="font-weight:700">Type</span> <span class="tg" style="font-weight:700">help</span> <span class="td">to see all commands  ·  Use</span> <span class="tg">↑↓</span> <span class="td">arrow keys for history  ·  Ctrl+L to clear</span>`);
+  aLine(`<span class="td">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span>`);
+  aBlank();
+  tScroll();
+}
+
+const CMDS={
+  help:()=>{
+    aBlank();
+    aLine(`<span class="tsh">📂 PORTFOLIO COMMANDS</span>`);
+    [['whoami','Who is Naveen? Identity overview'],['about','Full professional summary'],['skills','Skills overview (all categories)'],['skills --cloud','Cloud &amp; DevOps skills with progress bars'],['skills --ms365','Microsoft 365 &amp; security skills'],['skills --auto','Automation &amp; scripting skills'],['experience','Full work history timeline'],['projects','Key projects &amp; initiatives'],['certs','Certifications &amp; education']].forEach(([c,d])=>aLine(`  <span class="tg" style="display:inline-block;min-width:200px">${c}</span><span class="td">${d}</span>`));
+    aBlank();
+    aLine(`<span class="tsh">🌐 SOCIAL &amp; CONTACT</span>`);
+    [['contact','Contact information'],['social','All social profiles &amp; links'],['resume','Open résumé window']].forEach(([c,d])=>aLine(`  <span class="tpu2" style="display:inline-block;min-width:200px">${c}</span><span class="td">${d}</span>`));
+    aBlank();
+    aLine(`<span class="tsh">💻 SYSTEM COMMANDS</span>`);
+    [['ls','List all portfolio sections'],['open &lt;section&gt;','Open a UI window  e.g. open skills'],['cat readme.txt','Read portfolio info file'],['cat contact.txt','Read contact details'],['neofetch','System info with fancy display'],['ping naveen','Ping the admin 😄'],['matrix','Enter the matrix...'],['history','Show command history'],['date','Current date &amp; time'],['uptime','System uptime'],['clear / Ctrl+L','Clear terminal'],['exit','Close terminal']].forEach(([c,d])=>aLine(`  <span class="ty" style="display:inline-block;min-width:200px">${c}</span><span class="td">${d}</span>`));
+    aBlank();
+  },
+
+  whoami:()=>{
+    aBlank();
+    aLine(`<span class="tsh">🪪 IDENTITY</span>`);
+    aLine(`  <span class="tc2">Name     :</span> <span class="tg" style="font-weight:700">Naveen Hiremath</span>`);
+    aLine(`  <span class="tc2">Role     :</span> <span class="ty">IT &amp; Cloud Administrator · Automation Engineer</span>`);
+    aLine(`  <span class="tc2">Company  :</span> <span class="tw">Hector Beverages PVT LTD (PaperBoat) 🧃</span>`);
+    aLine(`  <span class="tc2">Location :</span> <span class="tw">Bengaluru, Karnataka, India 🇮🇳</span>`);
+    aLine(`  <span class="tc2">Email    :</span> <span class="tc2">naveenhiremathlogs@gmail.com</span>`);
+    aLine(`  <span class="tc2">Phone    :</span> <span class="tw">+91 8971285241</span>`);
+    aLine(`  <span class="tc2">Web      :</span> <span class="tc2">www.naveenhiremath.in</span>`);
+    aLine(`  <span class="tc2">GitHub   :</span> <span class="tc2">github.com/Naveen-O-Hiremath</span>`);
+    aLine(`  <span class="tc2">LinkedIn :</span> <span class="tc2">linkedin.com/in/naveen-hiremath-aa0b44246</span>`);
+    aLine(`  <span class="tc2">Cert     :</span> <span class="tg">✓ AZ-104 Microsoft Certified Azure Administrator</span>`);
+    aBlank();
+  },
+
+  about:()=>{
+    aBlank();
+    aLine(`<span class="tsh">🧑‍💻 PROFESSIONAL SUMMARY</span>`);
+    aLine(`<span class="tw">Microsoft 365, Azure, and Cloud Administrator with <span class="tg" style="font-weight:700">3+ years</span> of experience</span>`);
+    aLine(`<span class="tw">in Microsoft 365, Azure &amp; Azure DevOps, Entra ID, Patch Management, and AWS.</span>`);
+    aBlank();
+    aLine(`<span class="tw">Skilled in workflow automation, cloud infrastructure administration, IT security</span>`);
+    aLine(`<span class="tw">and SaaS Administration. Strong in PowerShell, Python, Power Automate, Intune,</span>`);
+    aLine(`<span class="tw">and SharePoint — delivering secure, scalable, cost-efficient IT solutions.</span>`);
+    aBlank();
+    aLine(`<span class="tw">Recognised for creating thorough IT documentation, SOPs, and knowledge bases.</span>`);
+    aBlank();
+    aLine(`<span class="ty" style="font-weight:700">Current:</span> <span class="tg">● Active — IT &amp; Cloud Administrator @ PaperBoat (Nov 2025 – Present)</span>`);
+    aLine(`<span class="ty" style="font-weight:700">Open to:</span> <span class="tw">Challenging cloud, automation &amp; IT leadership roles</span>`);
+    aBlank();
+  },
+
+  skills:(args='')=>{
+    if(args.includes('--cloud')){
+      aBlank();aLine(`<span class="tsh">☁️ CLOUD &amp; DEVOPS SKILLS</span>`);
+      [['Azure (AZ-104)',92],['Azure DevOps (VSTS)',88],['GCP / GKE',82],['Docker / Kubernetes',78],['AWS (WorkSpaces)',75]].forEach(([n,p])=>{
+        const b='█'.repeat(Math.round(p/5))+'░'.repeat(20-Math.round(p/5));
+        aLine(`  <span class="tw" style="display:inline-block;min-width:220px">${n}</span> <span class="tc2">${b}</span> <span class="ty">${p}%</span>`);
+      });
+    } else if(args.includes('--ms365')){
+      aBlank();aLine(`<span class="tsh">🔷 MICROSOFT 365 &amp; SECURITY SKILLS</span>`);
+      [['M365 Administration',94],['Entra ID / Azure AD',91],['Microsoft Intune',89],['SharePoint Online',87],['Exchange Online',85],['Power BI',76]].forEach(([n,p])=>{
+        const b='█'.repeat(Math.round(p/5))+'░'.repeat(20-Math.round(p/5));
+        aLine(`  <span class="tw" style="display:inline-block;min-width:220px">${n}</span> <span class="tpu2">${b}</span> <span class="ty">${p}%</span>`);
+      });
+    } else if(args.includes('--auto')){
+      aBlank();aLine(`<span class="tsh">⚡ AUTOMATION &amp; SCRIPTING SKILLS</span>`);
+      [['PowerShell Scripting',90],['Power Automate',88],['ITSM / ZenDesk',84],['Python',80],['Copilot Studio AI',78]].forEach(([n,p])=>{
+        const b='█'.repeat(Math.round(p/5))+'░'.repeat(20-Math.round(p/5));
+        aLine(`  <span class="tw" style="display:inline-block;min-width:220px">${n}</span> <span class="tg">${b}</span> <span class="ty">${p}%</span>`);
+      });
+    } else {
+      aBlank();aLine(`<span class="tsh">⚡ SKILLS OVERVIEW</span>`);
+      aLine(`<span class="td">Flags: </span><span class="tg">skills --cloud</span><span class="td"> | </span><span class="tpu2">skills --ms365</span><span class="td"> | </span><span class="ty">skills --auto</span>`);
+      aBlank();
+      aLine(`<span class="tc2">Cloud &amp; DevOps   :</span> <span class="tw">Azure, GCP/GKE, AWS, Docker, Kubernetes, Azure DevOps</span>`);
+      aLine(`<span class="tpu2">Microsoft 365    :</span> <span class="tw">Exchange, Entra ID, Intune, SharePoint, Power Automate, Power BI</span>`);
+      aLine(`<span class="tg">Security         :</span> <span class="tw">MFA, Conditional Access, RBAC, Zero Trust, CrowdStrike, Defender</span>`);
+      aLine(`<span class="ty">Automation       :</span> <span class="tw">PowerShell, Python, Power Automate, Copilot Studio</span>`);
+      aLine(`<span class="tb2">Dev (additional) :</span> <span class="tw">HTML, CSS, JS, PHP, SQL, Python, React, Flutter, Figma</span>`);
+    }
+    aBlank();
+  },
+
+  experience:()=>{
+    aBlank();aLine(`<span class="tsh">💼 WORK EXPERIENCE TIMELINE</span>`);aBlank();
+    aLine(`<span class="tg" style="font-weight:700">● [Nov 2025 – Present]</span>  <span class="tc2" style="font-weight:700">IT &amp; Cloud Administrator</span>`);
+    aLine(`  <span class="ty">Hector Beverages PVT LTD (PaperBoat)</span> · Bengaluru`);
+    aLine(`  <span class="td">→ GCP → GKE migration for cost efficiency</span>`);
+    aLine(`  <span class="td">→ Copilot AI Agent for IT inventory self-service</span>`);
+    aLine(`  <span class="td">→ Auto user-lifecycle provisioning (Azure AD + cPanel)</span>`);
+    aLine(`  <span class="td">→ IAM administration | CrowdStrike + Kaspersky | SharePoint Intranet</span>`);
+    aBlank();
+    aLine(`<span class="tpu2" style="font-weight:700">● [Jan 2025 – Nov 2025]</span>  <span class="tc2" style="font-weight:700">IT Administrator</span>`);
+    aLine(`  <span class="ty">Aurigo Software Technologies Pvt. Ltd.</span> · Bengaluru`);
+    aLine(`  <span class="td">→ Azure DevOps admin for 200+ users</span>`);
+    aLine(`  <span class="td">→ Automated onboarding — reduced manual effort by <span class="tg">70%</span></span>`);
+    aLine(`  <span class="td">→ M365 &amp; Entra ID | Power BI dashboards | AWS WorkSpaces</span>`);
+    aBlank();
+    aLine(`<span class="tb2" style="font-weight:700">● [May 2023 – Jan 2025]</span>  <span class="tc2" style="font-weight:700">Associate IT Administrator</span>`);
+    aLine(`  <span class="ty">Aurigo Software Technologies Pvt. Ltd.</span> · Bengaluru`);
+    aLine(`  <span class="td">→ Intune automation | M365 license savings <span class="tg">15%</span> annually</span>`);
+    aLine(`  <span class="td">→ ZenDesk ITSM — <span class="tg">95% SLA compliance</span> achieved</span>`);
+    aBlank();
+    aLine(`<span class="td">● [Nov 2022 – May 2023]</span>  <span class="tw">Intern — Enterprise IT</span>`);
+    aLine(`  <span class="ty">Aurigo Software Technologies Pvt. Ltd.</span> · Bengaluru`);
+    aLine(`  <span class="td">→ OS/app support | Asset management | AV setup (Zoom &amp; Teams)</span>`);
+    aBlank();
+  },
+
+  projects:()=>{
+    aBlank();aLine(`<span class="tsh">🚀 KEY PROJECTS &amp; INITIATIVES</span>`);aBlank();
+    [
+      ['🤖 Copilot AI Agent','IT inventory self-service — Copilot Studio + SharePoint + Dataverse @ PaperBoat'],
+      ['⚙️ Auto-Onboarding','Full lifecycle automation — Azure AD + M365 + Power Automate — 70% effort saved'],
+      ['☁️ GCP → GKE','Migrated sales apps from Compute Engine VMs to Kubernetes Engine'],
+      ['📊 Power BI Dashboard','Asset utilisation &amp; M365 license tracker for cost optimisation'],
+      ['🏢 SharePoint Intranet','Centralised corporate comms portal with Power Automate integrations'],
+      ['🩸 BloodLink App','BCA final year: blood donor tracker — PHP + MySQL + JavaScript'],
+    ].forEach(([n,d])=>{aLine(`  <span class="tg" style="font-weight:700">${n}</span>`);aLine(`  <span class="td">${d}</span>`);aBlank();});
+  },
+
+  certs:()=>{
+    aBlank();aLine(`<span class="tsh">🏅 CERTIFICATIONS &amp; EDUCATION</span>`);aBlank();
+    aLine(`<span class="tg" style="font-weight:700">✔ EARNED</span>`);
+    aLine(`  <span class="tc2" style="font-weight:700">Microsoft Certified Azure Administrator Associate (AZ-104)</span>`);
+    aLine(`  <span class="td">  Issued by Microsoft</span>`);
+    aBlank();
+    aLine(`<span class="ty" style="font-weight:700">⌛ PLANNED</span>`);
+    aLine(`  <span class="tw">AWS Certified Solutions Architect — Associate</span>`);
+    aLine(`  <span class="tw">CompTIA A+</span>`);
+    aBlank();
+    aLine(`<span class="tpu2" style="font-weight:700">🎓 EDUCATION</span>`);
+    aLine(`  <span class="tw">Bachelor of Computer Applications (BCA)</span>`);
+    aLine(`  <span class="td">  JSSSTC College, Rani Channamma University · 2019–2022 · CGPA: 8.3</span>`);
+    aLine(`  <span class="tw">Pre-University — BLDEA's Science College, Jamkhandi · 2016–2018</span>`);
+    aLine(`  <span class="td">  Karnataka State PU Board</span>`);
+    aBlank();
+  },
+
+  contact:()=>{
+    aBlank();aLine(`<span class="tsh">📬 CONTACT INFO</span>`);
+    aLine(`  <span class="tc2">Email   :</span> <span class="tw">naveenhiremathlogs@gmail.com</span>`);
+    aLine(`  <span class="tc2">Phone   :</span> <span class="tw">+91 8971285241</span>`);
+    aLine(`  <span class="tc2">Website :</span> <span class="tw">www.naveenhiremath.in</span>`);
+    aLine(`  <span class="tc2">GitHub  :</span> <span class="tw">github.com/Naveen-O-Hiremath</span>`);
+    aLine(`  <span class="tc2">LinkedIn:</span> <span class="tw">linkedin.com/in/naveen-hiremath-aa0b44246</span>`);
+    aLine(`  <span class="tc2">Location:</span> <span class="tw">12th Cross, Munnekollal, Bengaluru 560037 🇮🇳</span>`);
+    aBlank();
+  },
+
+  social:()=>{CMDS.contact();},
+
+  ls:()=>{
+    aBlank();
+    aLine(`<span class="td">total 9 sections</span>`);
+    [['drwxr-xr-x','about/','About me &amp; profile'],['drwxr-xr-x','experience/','Work history (3+ yrs)'],['drwxr-xr-x','skills/','Technical skill stack'],['drwxr-xr-x','projects/','Key projects &amp; builds'],['drwxr-xr-x','certs/','Certifications earned'],['drwxr-xr-x','social/','Social profiles'],['drwxr-xr-x','contact/','Contact channels'],['-rw-r--r--','resume.pdf','Downloadable CV'],['-rw-r--r--','readme.txt','Portfolio info'],['-rw-r--r--','contact.txt','Contact details']].forEach(([p,n,d])=>aLine(`  <span class="td">${p}</span>  <span class="tg" style="display:inline-block;min-width:150px">${n}</span> <span class="td"># ${d}</span>`));
+    aBlank();
+    aLine(`<span class="td">Tip:</span> <span class="tg">open about</span><span class="td"> | </span><span class="tg">open skills</span><span class="td"> | </span><span class="tg">open terminal</span><span class="td"> — opens any section in the UI</span>`);
+    aBlank();
+  },
+
+  resume:()=>{aBlank();aLine(`<span class="ty">📄 Opening résumé window...</span>`);aBlank();setTimeout(()=>openW('resume'),400);},
+
+  neofetch:()=>{
+    aBlank();
+    aLine(`<span class="tc2">         .--.</span>        <span class="tc2" style="font-weight:700">naveen</span><span class="td">@</span><span class="tg" style="font-weight:700">portfolio-os</span>`);
+    aLine(`<span class="tc2">        |o_o |</span>       <span class="td">──────────────────────────────────────</span>`);
+    aLine(`<span class="tc2">        |:_/ |</span>       <span class="tc2">OS:       </span><span class="tw">Naveen.OS 3.1 (Bengaluru, India)</span>`);
+    aLine(`<span class="tc2">       //    \\ \\</span>      <span class="tc2">Host:     </span><span class="tw">Hector Beverages (PaperBoat) 🧃</span>`);
+    aLine(`<span class="tc2">      (|      | )</span>     <span class="tc2">Kernel:   </span><span class="tw">Azure-5.4.0 + GKE + M365</span>`);
+    aLine(`<span class="tc2">     /'\\_   _/\`\\</span>     <span class="tc2">Shell:    </span><span class="tw">PowerShell 7.4 / portfolio-bash</span>`);
+    aLine(`<span class="tc2">     \\___)=(___/</span>     <span class="tc2">Cert:     </span><span class="tg">✓ AZ-104 Azure Administrator</span>`);
+    aLine(`                    <span class="tc2">Stack:    </span><span class="tw">Azure · GCP · M365 · PowerShell · Python</span>`);
+    aLine(`                    <span class="tc2">Exp:      </span><span class="tg">3+ years IT &amp; Cloud Administration</span>`);
+    aLine(`                    <span class="tc2">Language: </span><span class="tw">English, Kannada, Hindi</span>`);
+    aLine(`                    <span class="tc2">Uptime:   </span><span class="tw">3 years 4 months — all systems nominal</span>`);
+    aBlank();
+    aLine(`  <span style="background:#38bdf8;color:#000;padding:0 7px"> az </span><span style="background:#818cf8;color:#000;padding:0 7px"> id </span><span style="background:#34d399;color:#000;padding:0 7px">gcp</span><span style="background:#fbbf24;color:#000;padding:0 7px"> ps </span><span style="background:#f472b6;color:#000;padding:0 7px"> m3 </span><span style="background:#f87171;color:#000;padding:0 7px">sec</span>`);
+    aBlank();
+  },
+
+  'ping naveen':()=>{
+    aBlank();aLine(`<span class="td">PING naveen.hiremath.dev (10.0.1.1) — Cloud Admin Interface</span>`);aBlank();
+    let cnt=0;const iv=setInterval(()=>{
+      cnt++;const ms=(Math.random()*8+2).toFixed(1);
+      aLine(`<span class="tw">64 bytes from naveen: icmp_seq=${cnt} ttl=128 time=<span class="tg">${ms} ms</span></span>`);
+      tScroll();if(cnt===4){clearInterval(iv);aBlank();aLine(`<span class="tc2">--- naveen.hiremath.dev ping statistics ---</span>`);aLine(`<span class="tw">4 packets transmitted, 4 received, 0% packet loss</span>`);aLine(`<span class="tg">Status: ONLINE 🟢 — Admin is available!</span>`);aBlank();tScroll();}
+    },600);return true;
+  },
+
+  'cat readme.txt':()=>{
+    aBlank();aLine(`<span class="td">$ cat readme.txt</span>`);aBlank();
+    aLine(`<span class="tc2">══════════════════════════════════════════</span>`);
+    aLine(`<span class="tg" style="font-weight:700">  NAVEEN HIREMATH — PORTFOLIO OS v3.1.0</span>`);
+    aLine(`<span class="tc2">══════════════════════════════════════════</span>`);aBlank();
+    aLine(`<span class="tw">An interactive OS-inspired portfolio built with HTML, CSS &amp; JS.</span>`);
+    aLine(`<span class="tw">Navigate using dock icons, the menu bar, or this very terminal.</span>`);aBlank();
+    aLine(`<span class="ty" style="font-weight:700">Quick access:</span>`);
+    aLine(`  <span class="td">→</span> <span class="tg">github.com/Naveen-O-Hiremath</span>`);
+    aLine(`  <span class="td">→</span> <span class="tg">linkedin.com/in/naveen-hiremath-aa0b44246</span>`);
+    aLine(`  <span class="td">→</span> <span class="tg">www.naveenhiremath.in</span>`);aBlank();
+    aLine(`<span class="td">Languages spoken: English, Kannada, Hindi</span>`);
+    aLine(`<span class="td">Built with zero frameworks — pure HTML/CSS/JS 💪</span>`);aBlank();
+  },
+
+  'cat contact.txt':()=>{CMDS.contact();},
+
+  history:()=>{
+    aBlank();aLine(`<span class="tsh">📜 COMMAND HISTORY</span>`);
+    if(!tHistory.length){aLine(`<span class="td">  (no commands yet)</span>`);}
+    else{tHistory.forEach((c,i)=>aLine(`  <span class="td">${String(i+1).padStart(3)}  </span><span class="tw">${c}</span>`));}
+    aBlank();
+  },
+
+  clear:()=>{tout.innerHTML='';},
+
+  date:()=>{aBlank();aLine(`<span class="tw">${new Date().toString()}</span>`);aBlank();},
+  uptime:()=>{aBlank();aLine(`<span class="tw">up 3 years, 4 months — <span class="tg">all systems operational</span></span>`);aLine(`<span class="td">load avg: 0.68 0.72 0.60  (Azure, PowerShell, Coffee)</span>`);aBlank();},
+  version:()=>{aBlank();aLine(`<span class="tc2">Naveen.OS Terminal v3.1.0 · portfolio-bash 5.2</span>`);aBlank();},
+
+  matrix:()=>{
+    aBlank();aLine(`<span class="tg" style="font-weight:700">Initialising matrix protocol...</span>`);aBlank();
+    const ch='01アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモ';
+    let l=0;const id=setInterval(()=>{
+      let r='';for(let i=0;i<65;i++)r+=ch[Math.floor(Math.random()*ch.length)];
+      aLine(`<span class="tg" style="font-size:10px;letter-spacing:2px;opacity:${0.4+Math.random()*0.6}">${r}</span>`);
+      tScroll();l++;if(l>16){clearInterval(id);aBlank();aLine(`<span class="tc2" style="font-weight:700">Wake up, Naveen... The Cloud has you. ☁️🔴</span>`);aBlank();tScroll();}
+    },70);return true;
+  },
+
+  open:(args='')=>{
+    const w=args.trim().toLowerCase();
+    const valid=['about','skills','experience','projects','certs','resume','social','contact','terminal'];
+    if(valid.includes(w)){aBlank();aLine(`<span class="tg">Opening ${w} window...</span>`);aBlank();setTimeout(()=>openW(w),300);}
+    else{aBlank();aLine(`<span class="tr2">bash: open: unknown section '${w}'</span>`);aLine(`<span class="td">Available: ${valid.join(', ')}</span>`);aBlank();}
+  },
+
+  exit:()=>{aBlank();aLine(`<span class="ty">Goodbye! Closing terminal... 👋</span>`);aBlank();setTimeout(()=>closeW('terminal'),700);},
+};
+
+function runCmd(raw){
+  const s=raw.trim();if(!s)return;
+  tHistory.push(s);tHistIdx=tHistory.length;
+  aBlank();
+  aLine(`<span class="tg">naveen@portfolio-os</span><span class="td">:</span><span class="tb2">~</span><span class="td">$</span> <span class="ty">${s.replace(/&/g,'&amp;').replace(/</g,'&lt;')}</span>`);
+  const lo=s.toLowerCase();const parts=lo.split(/\s+/);const cmd=parts[0];const args=s.slice(cmd.length).trim();
+  if(lo==='ping naveen'){CMDS['ping naveen']();return;}
+  if(lo.startsWith('cat ')){const k='cat '+lo.slice(4).trim();if(CMDS[k]){CMDS[k]();tScroll();return;}}
+  if(cmd==='open'){CMDS.open(args);}
+  else if(cmd==='skills'){CMDS.skills(args);}
+  else if(CMDS[cmd]){CMDS[cmd](args);}
+  else{aBlank();aLine(`<span class="tr2">bash: ${cmd}: command not found</span>`);aLine(`<span class="td">Try </span><span class="tg">help</span><span class="td"> for a list of available commands.</span>`);aBlank();}
+  tScroll();
+}
+
+tinp.addEventListener('keydown',e=>{
+  if(e.key==='Enter'){const v=tinp.value;tinp.value='';runCmd(v);}
+  if(e.key==='ArrowUp'){e.preventDefault();if(tHistIdx>0){tHistIdx--;tinp.value=tHistory[tHistIdx];}}
+  if(e.key==='ArrowDown'){e.preventDefault();if(tHistIdx<tHistory.length-1){tHistIdx++;tinp.value=tHistory[tHistIdx];}else{tHistIdx=tHistory.length;tinp.value='';}}
+  if(e.key==='l'&&e.ctrlKey){e.preventDefault();tout.innerHTML='';}
+});
+
+// INIT
+setTimeout(()=>showNotif('👋','Welcome, Naveen.OS!','Click dock icons · ⌨️ Try the Terminal · ⌘K to search'),1800);
+</script>
 </body>
-
 </html>
